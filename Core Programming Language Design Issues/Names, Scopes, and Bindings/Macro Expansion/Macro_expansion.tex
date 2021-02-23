@@ -1,0 +1,17 @@
+\nopagenumbers
+{\bf Macro Expansions}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+To ease the burden of writing repetitive code prior to high-level programming languages, many assemblers provided sophisticated {\bf marco expansion} facilities. Consider the task of loading an element of a two-dimensional array from memory into a register. This operation can easily require half a dozen instructions, with details depending on the hardware instruction set; the size of the array elements; and whether the indices are constants, values in memory, or values in registers. In many early assemblers, one could define a macro that would that would replace an expression like {\tt ld2d(target$\_$reg, array$\_$name, row, column, row$\_$size, element$\_$size)} with the appropriate multi-instruction sequence. In a numeric program containing hundreds or thousands of array access operations, this macro could prove extremely useful.
+
+\vskip 6pt
+Macros like {\tt $\#$define LINE$\_$LEN 80} avoided the need to support named constants in C. More importantly parameterized macros are more efficent in equivalent C functions. They avoid the overhead of the subroutine call mechanism (including register saves and restores), and the code they generated could be integrated into any code improvements that the compiler was able to effect in the code surrounding the call.
+
+\vskip 6pt
+Unfortunately, C macros suffer from several limitations, all of which stem from the fact that they are implemented by textual substitutions, and are not understood by the rest of the compiler. Put another way, they provide a naming and binding mechanism that is separate from---and often at odds with---the rest of the programming language.
+
+
+\vfill\eject
+\bye

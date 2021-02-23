@@ -1,0 +1,284 @@
+\centerline{\bf Composite Types}
+
+\vskip 1cm
+
+1. What are struct tags in C? How are they related to type names? How did they change in C++?
+
+\filbreak
+\vskip 1cm
+
+2. How do the records of ML differ from those of most other languages?
+
+\filbreak
+\vskip 1cm
+
+3. Discuss the significance of "holes" in records. Why do they arise? What problems do they cause?
+
+\filbreak
+\vskip 1cm
+
+4. Why is it easier to implement assignment than comparison for records?
+
+\filbreak
+\vskip 1cm
+
+5. What is packing? What are its advantages and disadvantages?
+
+\filbreak
+\vskip 1cm
+
+6. Why might a compiler reorder the fields of a record? What problems might this cause?
+
+\filbreak
+\vskip 1cm
+
+7. Briefly describe two purposes for unions/variant records.
+
+\filbreak
+\vskip 1cm
+
+8. What is an array slice? For what purpose are slices useful?
+
+\filbreak
+\vskip 1cm
+
+9. Is there any significant difference between a two-dimensional array and an array of one-dimensional arrays?
+
+\filbreak
+\vskip 1cm
+
+10. What is the shape of an array?
+
+\filbreak
+\vskip 1cm
+
+11. What is a dope vector? What purpose does it serve?
+
+\filbreak
+\vskip 1cm
+
+12. Under whatcircumstances can an array declared within a subroutine be allocated in the stack? Under what circumstances must it be allocated in the heap?
+
+\filbreak
+\vskip 1cm
+
+13. What is a conformant array?
+
+\filbreak
+\vskip 1cm
+
+14. Discuss the comparative advantages of contiguous and row-pointer layout for arrays.
+
+\filbreak
+\vskip 1cm
+
+15. Explain the difference between row-major and column-major layout for contiguously allocated arrays. Why does a programmer need to know which layout the compiler uses? Why doo mosy languages designers consider row-major layout to be better?
+
+\filbreak
+\vskip 1cm
+
+16. How much of the work of computing the address of an element of an array can be performed at compile time? How much must be performed at run time?
+
+\filbreak
+\vskip 1cm
+
+17. Name three languages that provide particularly extensive support for character strings.
+
+\filbreak
+\vskip 1cm
+
+18. Why might a language permit operations on strings that it does not provide for arrays?
+
+\filbreak
+\vskip 1cm
+
+19. What are the strengths and weaknesses of the bit-vector representation for sets? How else might sets be implemented?
+
+\filbreak
+\vskip 1cm
+
+20. Discuss the tradeoffs between pointers and the recursive types that arise naturally in a language with a reference model of variables.
+
+\filbreak
+\vskip 1cm
+
+21. Summarise the ways in which one dereferences a pointer in various programming languages.
+
+\filbreak
+\vskip 1cm
+
+22. What is the difference between a pointer and an address? Betwen a pointer and a reference?
+
+\filbreak
+\vskip 1cm
+
+23. Discuss the advantages and disadvantages of the interoperability of pointers and arrays in C.
+
+\filbreak
+\vskip 1cm
+
+24. Under what circumstances must the bounds of a C array be specified in its declaration?
+
+\filbreak
+\vskip 1cm
+
+25. What are dangling references? How are they created, and why are they a problem?
+
+\filbreak
+\vskip 1cm
+
+26. What is garbage? How is it created, and why is it a problem? Discuss the comparative advantages of reference counts and tracing collection as a means of solving the problem.
+
+\filbreak
+\vskip 1cm
+
+27. What are smart pointers? What purpose do they serve?
+
+\filbreak
+\vskip 1cm
+
+28. Summarize the differences among mark-and-sweep, stop-and-copy, and generational garbage collection.
+
+\filbreak
+\vskip 1cm
+
+29. What is pointer reversal? What problem does it address?
+
+\filbreak
+\vskip 1cm
+
+30. What is "conservative" garbage collection? How does it work?
+
+\filbreak
+\vskip 1cm
+
+31. Do danging references and garbage ever arise in the same programming language? Why or why not?
+
+\filbreak
+\vskip 1cm
+
+32. Why was automatic garbage collection so slow to be adopted by imperative programming languages?
+
+\filbreak
+\vskip 1cm
+
+33. What are the advantages and disadvantages of allowing pointers to refer to objects that do not lie in the heap?
+
+\filbreak
+\vskip 1cm
+
+34. Why are lists so heavily used in functional programming languages?
+
+\filbreak
+\vskip 1cm
+
+35. What are list comprehensions? What languages support them?
+
+\filbreak
+\vskip 1cm
+
+36. Compare and contrast the support for lists in ML- and Lisp-family laguages.
+
+\filbreak
+\vskip 1cm
+
+37. Explain the distinction between interactive and file-based {\tt I/O}; between temporary and persistent files.
+
+\filbreak
+\vskip 1cm
+
+38. What are some of the tradeoffs between supporting {\tt I/O} in the language proper versus supporting it in libraries?
+
+\filbreak
+\vskip 1cm
+
+39. What are anonymous unions and structs? What purpose do they serve? How is this related to the integration of variants with records in Pascale and its descendants?
+
+\filbreak
+\vskip 1cm
+
+40. What is a tag (discriminant) in a variant record? In a language like Ada or OCaml, how does it differ from an ordinary field?
+
+\filbreak
+\vskip 1cm
+
+41. Discuss the type safety problems that arise with variant records. How can these problems be addressed?
+
+\filbreak
+\vskip 1cm
+
+42. Summarize the rules that prevent access to inappropriate fields of variant records in OCaml and Ada.
+
+\filbreak
+\vskip 1cm
+
+43. Why might one wish to constrain a variable, so that it can hold only one variant of a type?
+
+\filbreak
+\vskip 1cm
+
+44. Explain how classes and inheritance can be used to obtain the effect of constrained variant records.
+
+\filbreak
+\vskip 1cm
+
+45. What are tombstones? What changes do they require in the code to allocate and deallocate memory, and to assign and dereference pointers?
+
+\filbreak
+\vskip 1cm
+
+46. Explain how tombstones can be used to support compaction.
+
+\filbreak
+\vskip 1cm
+
+47. What are locks and keys? What changes do they require in the code to allocate and deallocate memory, and to assign and dereference pointers?
+
+\filbreak
+\vskip 1cm
+
+48. Explain why the protection afforded by locks and keys is only probabilistic.
+
+\filbreak
+\vskip 1cm
+
+49. Discuss the comparative advantages of tombstones and locks and keys as a means of catching dangling references.
+
+\filbreak
+\vskip 1cm
+
+50. Explain the differences between interactive and file-based {\tt I/O}, between temporary and persistent files, and between binary and text files.
+
+\filbreak
+\vskip 1cm
+
+51. What are the comparative advantages of text and binary files?
+
+\filbreak
+\vskip 1cm
+
+52. Describe the end-of-line conventions of Unix, Windows, and Macintosh files.
+
+\filbreak
+\vskip 1cm
+
+53. What are the advantages and disadvantages of building {\tt I/O} into a programming language, as opposed to providing it through a library routines?
+
+\filbreak
+\vskip 1cm
+
+54. Summarize the different approaches to text {\tt I/O} adopted by Fortran, Ada, C, and C++.
+
+\filbreak
+\vskip 1cm
+
+55. Describe some of the weaknessess of C's {\tt scanf} mechanism.
+
+\filbreak
+\vskip 1cm
+
+56. What are stream manipulators? How are they used in C++?
+
+\filbreak
+\vfill\eject
+\bye

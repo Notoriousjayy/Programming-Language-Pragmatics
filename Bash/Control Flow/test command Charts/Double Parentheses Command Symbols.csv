@@ -1,0 +1,16 @@
+The Double Parentheses Command Symbols,
+Symbol,Description
+,
+val++,Post-increment
+val--,Post-decrement
+++val,Pre-increment
+--val,Pre-decrement
+!,Logical negation
+~,Bitwise negation
+**,Exponentiation
+<<,Left bitwise shift
+>>,Right bitwise shift
+&,Bitwise Boolean AND
+|,Bitwise Boolean OR
+&&,Logical AND
+||,Logical OR

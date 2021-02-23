@@ -1,0 +1,25 @@
+\nopagenumbers
+{\bf Sets}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+{\bf Set}: an unordered collection of an arbitrary number of distinct values of a common type.
+
+\vskip 6pt
+{\bf Characteristic array}: a bit vector whose length (in bits) is the number of distinct values of the base type. A one in the $k$th position in the bit vector indicated that the $k$th element of the base type is a memeber of the set; a zero indicated that it is not.
+
+\vskip 6pt
+The type from which elements of a set are drawn is known as the {\bf base} or {\bf universe} type. In a language that uses ASCII, a set of characters would occupy 128 bits---16 bytes. Operations on bit-vector sets can make use of fast logical instructions on most machines. Union is bit-wise {\tt or}; intersection is bit-wise {\tt and}; difference is bit-wise {\tt not}, followed by bit-wise {\tt and}.
+
+\vskip 6pt
+Unfortunately, bit vectors do not work well for large base types: a set of integers, represented as a bit vector, would consume some 500 megabytes on a 32-bit machine. With 64-bit integers, a bit-vector set would consume more memory than is currently contained on all the computers in the world.Because of this problem, some languages limited sets to base types of fewer than some fixed number of values.
+
+\vskip 6pt
+For sets of elements drawn from a large universe, most modern languages use alternative implementations, whose size is proportional to the number of elements present, rather than to the number of values in the base type. Most languages also provide a built-in iterator to yield the elements of the set. A distinction is often made between {\bf sorted lists}, whose base type must support some notion of ordering, and whose iterators yield the elements smallest-to-largest, and {\bf unordered lists}, whose iterators yield the elements in arbitrary order. {\bf Ordered sets} are commonly implemented with skip lists or various sorts of trees. {\bf Unordered sets} are commonly implemented with hash tables.
+
+\vskip 6pt
+Some languages provide sets as a built-in type constructor. In many object oritented languages, sets are supported by the standard library instead. A few languages and libraries have no built-in set constructor, but do provide associative arrays (also known as "hashes", "dictonaries", or "maps"). These can be used to emulate unordered sets, by mapping all (and only) the desired elements to some dummy value.
+
+\vfill\eject
+\bye

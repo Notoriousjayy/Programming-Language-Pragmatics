@@ -1,0 +1,40 @@
+\nopagenumbers
+{\bf The Notion of Binding Time}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+{\bf Binding}: A binding is an association between two things, such as a $\underline{\hbox{name}}$ and the thing it names.
+
+\vskip 6pt
+{\bf Binding time}: Binding time is the time at which a binding is created, or more generally, the time at which any {\bf implementation} decision is made. Decisions may be bound at different times.
+
+\vskip 6pt
+{\bf Language design time}: in most languages, the $\underline{\hbox{control-flow}}$ constructs, the set of fundamental (primitive) types, the available $\underline{\hbox{constructs}}$ for creating complex types, and many other aspects of language $\underline{\hbox{semantics}}$ are chosen when the language is designed.
+
+\vskip 6pt
+{\bf Language implementation time}: Most language manualsleave a variety of issues to the discretion of the language implementor. Typically include the {it precision (number of bits)} of the fundamental {\it types}, the coupling of {\t I/O} to the operating system's notation of {\it files}, and the organization and maximum sizes of the $\underline{\hbox{stack}}$ and $\underline{\hbox{heap}}$.
+
+\vskip 6pt
+{\bf Program writing time}: Programmers choose $\underline{\hbox{algorithms}}$, $\underline{\hbox{data structures}}$, and $\underline{\hbox{names}}$.
+
+\vskip 6pt
+{\bf Compile time}: $\underline{\hbox{Compilers}}$ choose the mapping og {\it high-level} constructs to $\underline{\hbox{machine code}}$, including the layout of $\underline{\hbox{statically}}$ defined data in memory.
+
+\vskip 6pt
+{\bf Link time}: Most compilers support $\underline{\hbox{separate compilation}}$--- compiling different modules of a program at different times--- and depend on the availability of a library of standard $\underline{\hbox{subroutines}}$, a {\it program} is usually not complete until the various modules are joined together by a $\underline{\hbox{linker}}$. The {\it linker} chooses the overall layout of the $\underline{\hbox{modules}}$ with respect to one another, and resolves intermodule $\underline{\hbox{references}}$. When a name in one module refers to an object in another module, the $\underline{\hbox{binding}}$ between the two is not finalized until $\underline{\hbox{link time}}$.
+
+\vskip 6pt
+{\bf Load time}: Load time refers to the point at which the $\underline{\hbox{operating system}}$ loads the program into $\underline{\hbox{memory}}$ so that it can run. Most modern {\it operating systems} distinguish between $\underline{\hbox{virtual addresses}}$ and $\underline{\hbox{physical addresses}}$. {\it Virtual addresses} are chosen at $\underline{\hbox{link time}}$; {\it physical addresses} can change at $\underline{\hbox{runtime}}$. The processor's $\underline{\hbox{memory management}}$ hardware translates virtual addresses into physical addresses during each individual $\underline{\hbox{instruction}}$ at $\underline{\hbox{runtime}}$
+
+\vskip 6pt
+{\bf Runtime}: covers the entire span from the beginning to the end of ececution. $\underline{\hbox{Bindings}}$ to $\underline{\hbox{values}}$ to $\underline{\hbox{variabes}}$ occur ar runtime. {\it Runtime} includes {\it program} start-up time. {\it Module} entry, $\underline{\hbox{elaboration time}}$ (the point at which a declaration is first "seen"), $\underline{\hbox{subroutine}}$ call time, $\underline{\hbox{block}}$ entry time, and $\underline{\hbox{expression evaluation}}$, $\underline{\hbox{statement execution}}$
+
+\vskip 6pt
+$\underline{\hbox{static}}$ and $\underline{\hbox{dynamic}}$ are used to refer to before runtime and at runtime respectively.
+
+\vskip 6pt
+Compiler-based languages tend to be more efficent that interpreter-based implementations because they make earlier decisions.
+
+\vfill\eject
+\bye

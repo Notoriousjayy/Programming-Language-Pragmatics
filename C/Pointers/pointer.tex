@@ -1,0 +1,102 @@
+\nopagenumbers
+\centerline{{\bf Pointers and Arrays}}
+\vskip 1cm
+A pointer is a variable that contains the address of a variable.
+
+\filbreak
+\vskip 1cm
+{\bf Pointers and Addresses}
+\vskip 1mm
+\hrule
+
+\vskip 1mm
+The unary operator $\&$ gives the address of an object. The statement
+
+$$\hbox{{\tt p = $\&$c;}}$$
+
+assigns the address of {\tt c} to the variable {\tt p}, and {\tt p} is said to "point to" {\tt c}. The $\&$ operator only applies to objects in memory: variables and array elements. It cannot be applied to expressions, constants, or {\tt register} variables.
+
+\filbreak
+\vskip 1cm
+The unary operator * is the {\bf indirection} or {\bf dereferencing} operator; when applied to a pointer, it accesses the object the pointer points to.
+
+\vskip 1mm
+The following code is used to show how to use $\&$ and *.
+
+$$\vbox{\+\tt int x = 1, y = 2, z[10]; \cr
+	\+\tt int *ip;\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad /* ip is a pointer to int */\cr
+	\+\tt {}\cr
+	\+\tt ip = $\&$x;\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad /* ip now points to x */\cr
+	\+\tt y = *ip;\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad /*y is now 1 */\cr
+	\+\tt *ip = 0;\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad /* x is now 0 */\cr
+	\+\tt  ip = $\&$z[0];\quad\quad\quad\quad\quad\quad\quad\quad /* ip now points to z[0] */\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Pointers and Function Arguments}
+\vskip 1mm
+\hrule
+\vskip 1mm
+Since C passes arguments to functions by value, there is no direct way for the called function to alter a variable in the calling function. To directly alter the value of the argument you must use pointers.
+
+$$\vbox{\+\tt void \cleartabs&\tt swap(int *x, int *y) $\{$ \cr
+	\+&\tt int temp;\cr
+	\+\tt{}\cr
+	\+&\tt temp = *x;\cr
+	\+&\tt *x = *y;\cr
+	\+&\tt*y = temp;\cr
+	\+\tt$\}$\cr}$$
+
+$$\hbox{{\tt swap($\&$a, $\&$b);}\quad\quad\quad\quad\quad {\bf/* swap function calling sequence */}}$$
+ 
+\filbreak
+\vskip 1cm
+{\bf Pointers and Arrays}
+\vskip 1mm
+\hrule
+
+\vskip 1mm
+The declaration
+
+$$\hbox{{\tt int a[10];}}$$
+
+defines an array {\tt a} of size 10. The notation {\tt a[i]} refers to the {\tt i}-th element of the array. if {\tt pa} is a pointer to an integer, declared as
+
+$$\hbox{{\tt int *pa;}}$$
+
+then the assignment
+
+$$\hbox{{\tt pa = $\&$a[0];}}$$
+
+sets {\tt pa} to point to element zero of {\tt a}; that is, {\tt pa} contains the address of {\tt a[0]}.
+
+\vskip 1mm
+Now the assugnment
+
+$$\hbox{{\tt x = *pa;}}$$
+
+will copy the contents of {\tt a[0]} into {\tt x}.
+
+\filbreak
+\vskip 1cm
+If {\tt pa} points to a particular element of an array, then by definition {\tt pa+1} points to the next element, {\tt pa+i} points {\tt i} elements after {\tt pa}, and {\tt pa-1} points {\tt i} elements before {\tt pa}. Thus, if {\tt pa} points to {\tt a[0]},
+
+$$\hbox{{\tt *(pa+1)}}$$
+
+refers to the contents of {\tt a[1]}, {\tt pa+i} is the address of {\tt a[i]}, and *(pa+i) is the contents of {\tt a[i]}.
+
+\filbreak
+\vskip 1cm
+By definition, the value of a variable or expression of type array is the address of element zero of the array. Thus after the assignment
+
+$$\hbox{{\tt pa = $\&$a[0];}}$$
+
+{\tt pa} and {\tt a} have identical values. Since the the name of an array is a synonym for the location of the initiale element, the assignment {\tt pa = $\&$a[0]} can also be written as
+
+$$\hbox{{\tt pa = a;}}$$
+
+A reference to {\tt a[i]} can also be written as {\tt *(a+i)}. If {\tt pa} is a pointer, expressions may use it with a subscript; {\tt pa[i]} is identical to {\tt *(pa+i)}. In short, an array-and-index expression is equivalent to one written as a pointer and offset.
+
+\filbreak
+\vfill\eject
+\bye

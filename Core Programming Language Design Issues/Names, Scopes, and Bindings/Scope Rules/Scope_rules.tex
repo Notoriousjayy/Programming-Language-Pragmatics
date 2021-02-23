@@ -1,0 +1,24 @@
+\nopagenumbers
+{\bf Scope Rules}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+{\bf Scope}: The textual region of the program in which a {\bf binding} is active. In most programming languages, the {\it scope} of a binding is determined {\bf statically} (at runtime). A scope is the body of a {\bf module, class, subroutine,} or {\bf structured control-flow} statement. A scope is sometimes called a {\bf block}.
+
+\vskip 6pt
+{\bf referencing environment}: The set of active {\bf bindings}. {\it referencing environment} is principally determined by static or dynamic {\bf scope rules}. A referencing environment generally corresponds to a sequence of scopes that can be examined (in order) to find the current binding for a given name.
+
+\vskip 6pt
+In some case, referencing environments depends on {\bf binding rules}. Specifically, when a reference to a subroutine $S$ is stored in a variable, passed as a parameter to another subroutine, or returned as a function value, one needs to determine when the referencing environment for $S$ is chosen--- that is, when the binding between the reference to $S$ and the referencing environment of $S$ is made.
+
+\vskip 6pt
+\centerline{$\underline{\hbox{{\bf Two Principle Binding Rule Options}}}$}
+
+\vskip 6pt
+{\bf Deep binding}: The choice is made when the reference is first created.
+
+\vskip 6pt
+{\bf Shallow binding}: the choice is made when the {\bf reference} is finally used.
+
+\vfill\eject

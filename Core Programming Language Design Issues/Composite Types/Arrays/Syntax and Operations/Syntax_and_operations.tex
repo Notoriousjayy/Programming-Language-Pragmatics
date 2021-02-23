@@ -1,0 +1,40 @@
+\nopagenumbers
+{\bf Syntax and Operations}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+Most languages refer to an elemen of an array by appending a subscript---usualy delimited by square brackets---to the name of the array: {\tt Arrray$\lbrack 3 \rbrack$}
+
+\vskip 6pt
+In some languages one declares an array by appending subscript notation to the syntax that would be used to declare a scalar. In C:
+
+$$\hbox{{\tt char upper$\lbrack N \rbrack$;}}$$
+
+In C, the lower bound of an index range is always zero: the indices of an $n$-element array are $0\ldots n-1$.
+
+\vskip 6pt
+In some languages, one can also declare a {\bf multi-dimensional} array (array of arrays) by using the {\tt array} constructor more than once in the same declaration.
+
+\vskip 6pt
+In C, one must also declare an array of arrays, and use two-subscript notation, but C's integration of pointers and arrays means that slices are not supported.
+
+$$\hbox{{\tt char matrix$\lbrack N \rbrack$$\lbrack N \rbrack$;}}$$
+
+given this definition, {\tt matrix$\lbrack 3\rbrack \lbrack 4\rbrack$} denotes an individual element of the array, but {\tt matrix$\lbrack 3 \rbrack$} denotes a {\bf reference}, to either the third row of the array or to the first  element of that row, depending on context.
+
+\vskip 12pt
+
+{\bf Slices and Array Operations}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+A {\bf slice} or {\bf section} is a rectangular portion of an array. Many scripting languages provide extensive faciliries for slicing.
+
+\vskip 6pt
+In most languages, the only operations permitted on an array are slection of an element, and assignment. A few languages allow arrays to be compared for equality.
+
+
+\vfill\eject
+\bye

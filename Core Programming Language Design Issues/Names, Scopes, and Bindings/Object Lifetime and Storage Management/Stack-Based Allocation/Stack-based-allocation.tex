@@ -1,0 +1,36 @@
+\nopagenumbers
+{\bf Stack-Based Allocation}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+Each instance of a {\bf subroutine} at runtime has its own {\bf frame} (also called an {\bf activation record}) on the stack, containing arguments and return values, local variables, temporaries, and bookkepping information.
+
+\vskip 6pt
+The $\underline{\hbox{{\bf activation record}}}$ contains {\bf arguments} and {\bf return values}, {\bf local variables}, {\bf temporaries}, and {\bf bookkepping} information.
+
+\vskip 6pt
+
+{\bf Temporaries} are typically intermediate values produced in complex calculations.
+
+\vskip 6pt
+{\bf Bookkeeping} information typically includes the {\bf subroutines} return address, a {\bf reference} to the {\bf stack frame} of the caller (also called the {\bf dynamic link}), {\bf saved values} of registers needed by both the {\bf caller} and the {\bf callee}, and various other values.
+
+\vskip 6pt
+Arguments to be passed to subsequent routines lie at the top of the {\bf frame}, where the {\bf callee} can easily find them
+
+\vskip 6pt
+Maintenence of the stack is the reponsibility of the subroutine {\bf calling sequence}---the code executed by the caller immediately before and after the call---and of the {\bf prologue} (code executed at the beginning) and {\bf epilogue} (code executed at the end) of the subroutine itself.
+
+\vskip 6pt
+Sometimes the {\bf calling sequence} is ued to refer to the combined operations of the {\bf caller}, the {\bf prologue}, and the {\bf epilogue}.
+
+\vskip 6pt
+If a language permits recursion, static allocation of local variables is no longer an option, since the number of instances of a variable may need to exist at the same time is conceptually unbounded. The natural nesting of subroutine calls make it easy to allocate space for locals on a stack.
+
+\vskip 6pt
+The location of a stack frame cannot be predicted at compile time the offsets of objects {\it within} a frame usually {\it can} be statically determined. Moreover, the compiler can arrange for a particular register, known as the {\bf frame pointer} to always point to a known location within the frame of the current subroutine. Code that needs to access a local variable within the current frame, or an argument near the top of the calling frame can do so by adding a predetermined offset to the value in the frame pointer. Almost every processor provides a {\bf displacement addressing} mechanism that allows this addition to be specified implicitly as part of an ordinary {\tt load} or {\tt store} instruction. The stack grown "downward" toward lower addresses in most language implementations. Some machines provide special {\tt push} and {\tt pop} instructions that assume this direction of growth. Local variables, temporaries, and bookkeeping information typically have $\underline{\hbox{negative offsets}}$ from the frame pointer. Arguments and returns typically have $\underline{\hbox{positive offsets}}$; they reside in the caller's frame.
+
+
+\vfill\eject
+\bye

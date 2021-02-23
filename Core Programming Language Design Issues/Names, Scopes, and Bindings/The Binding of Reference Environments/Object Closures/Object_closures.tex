@@ -1,0 +1,19 @@
+\nopagenumbers
+{\bf Object Closures}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+{\bf Object closure}: An object that plays the role of a function and its {\bf referencing environment}.
+
+\vskip 6pt
+{\bf annonymous method}: An unnamed method.
+
+\vskip 6pt
+The referencing environment in a closure will be nontrivial only when passing a nested subroutine. This mean that the implementation of first-class subroutines is trivial in a language without nested subroutines. Programming languages that do not allow nested subroutines are missing a useful feature: the ability to pass a subroutine {\it with context}. In object-oriented languages, there is an alternative way to achieve a similiar effect: we can encapsulate our subroutine as a method of a simple object, and let the object's fields hold context for the method.
+
+\vskip 6pt
+An object that plays the role of a function and its referencing environment may be called an {\it object closure}, a {\it fuction object}, or a {\it functor}.
+
+\vfill\eject
+\bye

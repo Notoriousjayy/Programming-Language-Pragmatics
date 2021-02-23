@@ -1,0 +1,303 @@
+\centerline{\bf Concurrency}
+
+\vskip 1cm
+
+1. Explain the distinctions among concurrent, parallel, and distributed.
+
+\filbreak
+\vskip 1cm
+
+2. Explain the motivation for concurrency. Why do people write concurrent programs? What accounts for the increased interest in concurrency in recent years?
+
+\filbreak
+\vskip 1cm
+
+3. Describe the implementation levels at which parallelism appears in modern systems, and the levels of abstraction at which it may be considered by the programmer.
+
+\filbreak
+\vskip 1cm
+
+4. What is a race condition? What is synchronization?
+
+\filbreak
+\vskip 1cm
+
+5. What is a context switch? Preemption?
+
+\filbreak
+\vskip 1cm
+
+6. Explain the concept of a dispatch loop. What are its advantages and disadvantages with resepct to multithreaded code?
+
+\filbreak
+\vskip 1cm
+
+7. Explain the distinction between a multiprocessor and a cluster; between a processor and a core.
+
+\filbreak
+\vskip 1cm
+
+8. What does it mean for memory in a multiprocessor to be uniform? What is the alternative?
+
+\filbreak
+\vskip 1cm
+
+9. Explain the coherence problem for multicore and multiprocessor caches.
+
+\filbreak
+\vskip 1cm
+
+10. What is a vector machine? Where does vector technology appear in modern systems?
+
+\filbreak
+\vskip 1cm
+
+11. Explain the differences among coroutines, threads, lightweight processes, and heavyweight processes.
+
+\filbreak
+\vskip 1cm
+
+12. What is a quasiparallelism?
+
+\filbreak
+\vskip 1cm
+
+13. Describe the bag of tricks programming model.
+
+\filbreak
+\vskip 1cm
+
+14. What is busy-waiting? What is its principal alternative?
+
+\filbreak
+\vskip 1cm
+
+15. Name four explicitly concurrent programming languages.
+
+\filbreak
+\vskip 1cm
+
+16. Why don't message-passing programs require explicit synchronization mechanisms.
+
+\filbreak
+\vskip 1cm
+
+17. What are the tradeoffs between language-based and library-based implementations of concurrency?
+
+\filbreak
+\vskip 1cm
+
+18. Explain the difference between data parallelism and task parallelism.
+
+\filbreak
+\vskip 1cm
+
+19. Describe six different mechanisms commonly used to create new threads of control in a concurrent program.
+
+\filbreak
+\vskip 1cm
+
+20. In what sense is {\tt fork/join} more powerful than co-begin?
+
+\filbreak
+\vskip 1cm
+
+21. What is a thread pool in Java? What purpose does it serve?
+
+\filbreak
+\vskip 1cm
+
+22. What is meant by a two-levelthread implementation?
+
+\filbreak
+\vskip 1cm
+
+23. What is a ready list?
+
+\filbreak
+\vskip 1cm
+
+24. Describe the progressive implementation of scheduling, preemption, and (true) parallelism on top of coroutines.
+
+\filbreak
+\vskip 1cm
+
+25. What is mutual exclusion? What is a critical section?
+
+\filbreak
+\vskip 1cm
+
+26. What does it mean for an operation to be atomic? Explain the difference between atomicity and condition synchronization.
+
+\filbreak
+\vskip 1cm
+
+27. Describe the behavior of a {\tt test$\_$and$\_$set} instruction. Show how to use it to build a spin lock.
+
+\filbreak
+\vskip 1cm
+
+28. Describe the behavior of the {\tt compare$\_$and$\_$swap} instructions. What advantages does it offer in comparison to {\tt test$\_$and$\_$set}?
+
+\filbreak
+\vskip 1cm
+
+29. Explain how a reader-writer lock differs from an "ordinary" lock.
+
+\filbreak
+\vskip 1cm
+
+30. What is a barrier? In what types of programs are barriers common?
+
+\filbreak
+\vskip 1cm
+
+31. What does it mean for an algorithm to be nonblocking? What advantages do nonblocking algorithms have over algorithms based on locks?
+
+\filbreak
+\vskip 1cm
+
+32. What is sequential consistency? Why is it difficult to implement?
+
+\filbreak
+\vskip 1cm
+
+33. What information is provided by a memory consistency model? What is the relationship between hardware-level and language-level memory models.
+
+\filbreak
+\vskip 1cm
+
+34.  Explain how to extend a preemptive uniprocessor scheduler to work correctly on a multiprocessor.
+
+\filbreak
+\vskip 1cm
+
+35. What is a spin-then-yield lock?
+
+\filbreak
+\vskip 1cm
+
+36. What is a bounded buffer?
+
+\filbreak
+\vskip 1cm
+
+37. What is a semaphore? What operations does it support? How do binary and general semaphores differ?
+
+\filbreak
+\vskip 1cm
+
+38. What is a monitor? How do monitor condition variables differ fro semaphores?
+
+\filbreak
+\vskip 1cm
+
+39. Explain the difference between treating treating monitor signals as hints and treating them as absolutes.
+
+\filbreak
+\vskip 1cm
+
+40. What is a monitor invariant? Under what circumstances must it be guaranteed to hold?
+
+\filbreak
+\vskip 1cm
+
+41. Describe the nested monitor problem and some potential solutions.
+
+\filbreak
+\vskip 1cm
+
+42. What is deadlock?
+
+\filbreak
+\vskip 1cm
+
+43. What is a conditional region? How does it differ from a monitor?
+
+\filbreak
+\vskip 1cm
+
+44. Summarize the synchronization mechanisms of Ada 95, Java, and C$\#$. Contrast them with one another, and with monitors and conditional critical regions. Be sure to explain the features added to Java 5.
+
+\filbreak
+\vskip 1cm
+
+45. What is transactional memory? What advantages does it offer over algorithms based on locks? What challenges will need to be overcome before it enters widespread use?
+
+\filbreak
+\vskip 1cm
+
+46. Describe the semantics of the HPF/Fortran 95 {\tt forall} loop. How does it differ from {\tt do concurrent}?
+
+\filbreak
+\vskip 1cm
+
+47. Why might pure functional languages be said to provide a particularly attractive setting for concurrent programming?
+
+\filbreak
+\vskip 1cm
+
+48. What are futures? In what languages do they appear? What precautions must the programmer take when using them?
+
+\filbreak
+\vskip 1cm
+
+49. Explain the difference between {\tt AND} parrallelism and {\tt OR} parallelism in Prolog.
+
+\filbreak
+\vskip 1cm
+
+50. Describe three ways in which processes or threads commonly name their communication partners.
+
+\filbreak
+\vskip 1cm
+
+51. What is a datagram?
+
+\filbreak
+\vskip 1cm
+
+52. Why, in general, might a {\tt send} operation need to block?
+
+\filbreak
+\vskip 1cm
+
+53. What are the three principal synchronization options for the sender of a message? What are the tradeoffs among them?
+
+\filbreak
+\vskip 1cm
+
+54. What are {\tt gather} and {\tt scatter} operations in a message-passing program? What are marshalling and unmarshalling?
+
+\filbreak
+\vskip 1cm
+
+55. Describe the tradeoffs between explicit and implicit message receipt.
+
+\filbreak
+\vskip 1cm
+
+56. What is a remote procedure call (RPC)? What is a stub compiler?
+
+\filbreak
+\vskip 1cm
+
+57. What are the obstacles to transparency in an RPC system?
+
+\filbreak
+\vskip 1cm
+
+58. What is a rendezous? How does it differ from a remote procedure call?
+
+\filbreak
+\vskip 1cm
+
+59. Explain the purpose of a {\tt select} statement in Ada or Go.
+
+\filbreak
+\vskip 1cm
+60. What semantic and pragmatic challenges are introduced by the ability to "peek" inside messages before they are received?
+
+\filbreak
+\vfill\eject
+\bye

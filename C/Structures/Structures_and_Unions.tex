@@ -1,0 +1,351 @@
+{\bf Structures and Unions}
+\vskip 1mm
+\hrule
+
+\vskip 1mm
+{\bf Introduction}
+
+\vskip 1mm
+A structure stores related information about an entity. A structure is a collection of variables under a single name. The variables within a structure are of different data types and each has a name that is used to select it from the structure.
+
+\filbreak
+\vskip 1cm
+{\bf Structure Declaration}
+
+\vskip 1mm
+A structure type is generally declared by using the following syntax:
+
+$$\vbox{\+\tt struct\cleartabs&\tt{} structure-name $\{$\cr
+	\+&\tt data$\_$type var-name1;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&$\cdots\cdots\cdots$\cr
+	\+$\}$;\cr}$$
+
+The structure declaration, does not allocate any memory or consume storage space.
+
+\filbreak
+\vskip 1cm
+{\tt Typedef} {\bf Declarations}
+
+\vskip 1mm
+{\tt typedef} (derived from type definition) keyword enables the programmer to create a new data type name by using an existing data type. The general syntax  of using {\tt typedef} keyword is given as:
+
+$$\hbox{\tt typedef existing$\_$data$\_$type new$\_$data$\_$type;}$$
+
+For example
+
+$$\hbox{\tt typedef int INTEGER}$$
+
+{\tt INTEGER} is the new name of data type {\tt int}.
+
+\vskip 1mm
+
+When we procede a {\tt struct} name with the {\tt typedef} keyword, the the {\tt struct} becomes a new type.
+
+$$\vbox{\+\tt typedef\cleartabs& \tt{} struct structure-name $\{$\cr
+	\+&\tt data$\_$type var-name1;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&$\cdots\cdots\cdots$\cr
+	\+$\}$;\cr}$$
+
+Now you can declare variables of this new data type as you declare the variables of type {\tt int, float. char, double}, etc. To declare a variable of a structure type, write
+
+$$\hbox{\tt structure-name var-name}$$
+
+We have not initialized $\hbox{\tt structure-name var-name}$.
+
+\filbreak
+\vskip 1cm
+{\bf Initialization of Strucutres}
+
+\vskip 1mm
+When the user does not explicitly initialize the structure, the C automatically does it. For {\tt int} and {\tt float} members the values are initialized to zero, and char and string members are initialized to '$\backslash 0$' by default.
+
+\vskip 1mm
+The initializers are enclosed in braces and are separated by commas. Initializers must match their corresponding types in the structure definition. The general syntax to initialize a strucutre variable is:
+
+$$\vbox{\+\tt typedef\cleartabs& \tt{} struct structure-name $\{$\cr
+	\+&\tt data$\_$type var-name1;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&$\cdots\cdots\cdots$\cr
+	\+\tt$\}$ struct$\_$var = $\{$ constant1, constant2, constant3, $\ldots$ $\}$;\cr}$$
+
+or
+
+$$\vbox{\+\tt typedef\cleartabs& \tt{} struct structure-name $\{$\cr
+	\+&\tt data$\_$type var-name1;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&$\cdots\cdots\cdots$\cr
+	\+$\}$;\cr}$$
+
+$$\hbox{\tt struct struct$\_$var = $\{$ constant1, constant2, constant3, $\ldots$ $\}$;}$$
+
+When all members of a structure are not initialized, it is called partial initialization. In case of partial initialization, the members left unitilization the compiler will assign them their default values.
+
+\filbreak
+\vskip 1cm
+{\bf Accessing the Members of a Structure}
+
+The syntax of accessing a structure or a member of a structure is:
+
+$$\hbox{\tt struct$\_$var.member$\_$name}$$
+
+To assign values to the individual data members of the structure, you may write
+
+$$\hbox{\tt struct$\_$var.member$\_$name = value;}$$
+
+To input values for data members of the structure, you may write
+
+$$\vbox{\+\tt scanf("$\%$d", $\&$struct$\_$var.member$\_$name) \cr
+	\+\tt scanf("$\%$s", struct$\_$var.member$\_$name)\cr}$$
+
+To print the values of a structure, you may write
+
+$$\vbox{\+\tt printf("$\%$s", $\&$struct$\_$var.member$\_$name) \cr
+	\+\tt printf("$\%$f", struct$\_$var.member$\_$name)\cr}$$
+
+Memory is allocated only when we declare the variables of the structure. In the absence of any variable, structure definition is just a template that will be used to reserve memory when a variable of type {\tt struct} is declared.
+
+\filbreak
+\vskip 1cm
+{\bf Nested Structures}
+
+\vskip 1mm
+A structure can be placed within another structure. The easiest way is to declare the structures separately and then group them in the higher level structure. When you do this, check that nesting must  be done from inside out (from lowest level to the most inclusive).
+
+$$\vbox{\+\tt typedef\cleartabs& \tt{} struct $\{$\cr
+	\+&\tt data$\_$type var-name1;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&$\cdots\cdots\cdots$\cr
+	\+\tt$\}$ struct$\_$var1;\cr
+	\+{}\cr
+	\+\tt typedef\cleartabs& \tt{} struct $\{$\cr
+	\+&\tt data$\_$type var-name1;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&$\cdots\cdots\cdots$\cr
+	\+\tt$\}$ struct$\_$var2;\cr
+	\+{}\cr
+	\+\tt typedef\cleartabs& \tt{} struct $\{$\cr
+	\+&\tt data$\_$type var-name1;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&$\cdots\cdots\cdots$\cr
+	\+\tt$\}$ struct$\_$varN;\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Arrays of Structures}
+
+\vskip 1mm
+The general syntax for declaring an array of structures is:
+
+$$\vbox{\+\tt struct\cleartabs& \tt{} structure-name $\{$\cr
+	\+&\tt data$\_$type var-name1;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&\tt$\cdots\cdots\cdots$\cr
+	\+\tt$\}$ struct struct$\_$name struct$\_$var[index];\cr}$$
+
+A structure array can be declared by writing
+
+$$\hbox{\tt struct stuct$\_$name struct$\_$var[index]}$$
+
+To assign values to the $i$th position, we write
+
+$$\hbox{\tt struct$\_$var.member$\_$name = value;}$$
+
+\filbreak
+\vskip 1cm
+{\bf Structures and Functions}
+
+\vskip 1mm
+Different ways of passing structures to functions
+
+\vskip 1mm
+1. Passing individual members
+
+\vskip 1mm
+2. Passing the entire structure
+
+\vskip 1mm
+3. Passing the address of structure
+
+\vskip 1cm
+{\bf Passing Individual Members}
+To pass any individual member of a structure to a function, we must use the direct slection operator to refer to the individual members.
+
+$$\vbox{\+\tt typedef\cleartabs& \tt{} struct $\{$\cr
+	\+&\tt int x;\cr
+	\+&\tt int y;\cr
+	\+\tt$\}$ POINT;\cr}$$
+$$\hbox{{\tt void display(int, int)} /* Display declaration */}$$
+$$\vbox{\+\tt POINT p1 = $\{$ 2, 3 $\}$ \cr
+	\+\tt display(p1.x, p1.y);\cr}$$
+
+\vskip 1cm
+{\bf Passing the Entire Structure}
+
+\vskip 1mm
+We can pass an entire structure as a fuction argument. When a structure is passed as an argument, it is passed using the call by value method, i.e., a copy of each member of the structure is made.
+
+\vskip 1mm
+The general syntax for passing a structure to a function and returning a structure can be given as:
+
+$$\hbox{\tt struct struct$\_$name func$\_$name(struct struct$\_$name struct$\_$var);}$$
+
+The above syntax can vary. For example, in some situations, we may want a function to recieve a structure but return a void or the value of some other data type.
+
+\filbreak
+\vskip 1cm
+{\bf Passing Structures through Pointers}
+
+\vskip 1mm
+Passing large structures to functions using call by value is inefficient. It is preferred to pass structures through pointers. The syntax to declare a pointer to a structure can be given as:
+
+$$\vbox{\+\tt struct\cleartabs& \tt{} struct$\_$name $\{$\cr
+	\+&\tt data$\_$type var-name1;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&\tt data$\_$type var-name3;\cr
+	\+&\tt$\cdots\cdots\cdots$\cr
+	\+\tt$\}$ *ptr;\cr}$$
+
+or
+
+$$\hbox{\tt struct struct$\_$name *ptr;}$$
+
+To access the members of a structure, we can write
+
+$$\hbox{\bf /* get the structure, then select a member */}$$
+$$\hbox{\tt (*ptr).member$\_$name;}$$
+
+We introducte the new symbol operator -> known as "pointing-to" operator. It can be used as:
+
+$$\hbox{\tt ptr -> member$\_$name;}$$
+
+\filbreak
+\vskip 1cm
+{\bf Self-Referential Structures}
+
+\vskip 1mm
+Self-referential structures are those structures that contain a reference to the data of its same type. That is, a self-referential structure, in addition to other data, contains a pointer to a data that is of the same type as that of the structure. For example
+
+$$\vbox{\+\tt struct\cleartabs&\tt {} node $\{$ \cr
+	\+&\tt int val;\cr
+	\+&\tt struct node *next;\cr
+	\+\tt $\}$;\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Unions}
+
+\vskip 1mm
+Similar to structures, a union is a collection of variables of different data types. The only difference between a structure and a union is that in case of unions, yu can only store information in one field at any one time. When a new value is assigned to a field, the existing data is replaced with the new data.
+
+\vskip 1mm
+Unions are used to save memory. They are useful for applications that involve multiple members, where values need not be assigned to all the members at any one time.
+
+\filbreak
+\vskip 1cm
+{\bf Declaring Unions}
+
+\vskip 1mm
+The syntax for union declaration can be given as:
+
+$$\vbox{\+\tt union\cleartabs& \tt{} union$\_$name $\{$\cr
+	\+&\tt data$\_$type var-name1;\cr
+	\+&\tt data$\_$type var-name2;\cr
+	\+&\tt data$\_$type var-name3;\cr
+	\+&\tt$\cdots\cdots\cdots$\cr
+	\+\tt$\}$;\cr}$$
+
+The {\tt typedef} keyword can be used to simplify the declaration of union variables. The most important thing to remeber about a union is that the size of a union is the size of its largesrt field.
+
+\filbreak
+\vskip 1cm
+{\bf Accessing Members of a Union}
+
+The syntax of accessing a union or a member of a union is
+
+$$\hbox{\tt union$\_$name.member$\_$name}$$
+
+\filbreak
+\vskip 1cm
+{\bf Initializing Unions}
+
+\vskip 1mm
+The difference between a structure and a union is that in case of a union, the fields share the same memory space, so new data replaces any existing data. Below is sample code:
+
+$$\vbox{\+\tt typedef \cleartabs& \tt{}union POINT $\{$\cr
+	\+&\tt int x;\cr
+	\+&\tt int y;\cr
+	\+\tt$\}$;\cr}$$
+
+$$\hbox{{\tt POINT p1 = $\{$ 4, 5 $\}$}\quad\bf /* Illegal in case of unions */}$$
+
+\filbreak
+\vskip 1cm
+{\bf Arrays of Union variables}
+
+\vskip 1mm
+Like structures we can also have an array of union variables. However, because of the problem of new data overwriting existing data in the other fields, the program may not display accurate results.
+
+$$\vbox{\+\tt typedef \cleartabs& \tt{}union POINT $\{$\cr
+	\+&\tt int x, y;\cr
+	\+\tt$\}$;\cr}$$
+
+$$\vbox{\+\tt union POINT points[3];\cr
+	\+&\tt points[0].x = 2;\cr
+	\+&\tt points[0].y = 3;\cr
+	\+&\tt points[1].x = 4;\cr
+	\+&\tt points[1].y = 5;\cr
+	\+&\tt points[2].x = 6;\cr
+	\+&\tt points[2].y = 7;\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Unions inside of Structures}
+
+\vskip 1mm
+Generally, unions can be very useful when declared inside a structure.
+
+\filbreak
+\vskip 1cm
+{\bf Points to Remember}
+
+\vskip 1mm
+$\bullet$ Structure is a user-defined data type that can store related information (even of different data types)
+
+\vskip 3mm
+$\bullet$ A structure is declared using the keyworkd {\tt struct}, followed by the structure name.
+
+\vskip 3mm
+$\bullet$ The structure definition does not allocate any memory or consume storage space. It just gives a template that conveys to the C compiler how the structure is laid out in the memory and gives details of the member names. Like any data type, memory is allocated for the structure when we declare a variable of the structure.
+
+\vskip 3mm
+$\bullet$ When a {\tt struct} name is preceded with the keyword {\tt typedef}, then the {\tt struct} becomes a new type.
+
+\vskip 3mm
+$\bullet$ When the user does not explicity initialize the structure, then C automatically does it. For {\tt int} and {\tt float} members, the values are initialized to zero and {\tt char} and {\tt string} members are initialized to '$\backslash 0$' by default.
+
+\vskip 3mm
+$\bullet$ A structure member variable is generally accessed using a '.' (dot) operator.
+
+\vskip 3mm
+$\bullet$ A structure can be placed within another structure. That is, a structure may contain another structure as its member. Such a structure is called a nested structure.
+
+\vskip 3mm
+$\bullet$ Self-referential structures are those structures that contain a reference to data of its same type. That is, a self-referential structure, in addition to other data, contains a pointer to a data that is of the same type as that of the structure.
+
+\vskip 3mm
+$\bullet$ A union is a collection of variables of different data types in which memory is shared among these variables. The size of a union is equal to the size of its largest member.
+
+\vskip 3mm
+$\bullet$ The only difference between a structure and a union is that in case of unions information can only be stored in one member at a time.
+
+
+%$$\vbox{\+\bf \cleartabs& \cr
+%	\+\cr
+%	\+\cr
+%	\+\cr}$$
+
+\vfill\eject
+\bye

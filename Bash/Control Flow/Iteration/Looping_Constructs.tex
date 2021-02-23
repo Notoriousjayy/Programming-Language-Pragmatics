@@ -1,0 +1,48 @@
+{\bf The {\tt for} Command}
+\vskip 1mm
+In each iteration, the variable {\tt var} contains the current value in the list. The {\tt commands} entered between the {\tt do} and {\tt done} statements can be one or more standard bash shell commands. Within the commands, the \$var variable contains the current list item value for the iteration.
+\vskip 1mm
+$$\vbox{\+\bf for \cleartabs& {\tt var} \bf in list \cr
+	\+\bf do \cr
+	\+&\tt commands \cr
+	\+\bf done \cr}$$
+
+\vskip 1mm
+After the last iteration, the \$var variable remains valid throught the remainder of the shell script. It retains the last iteration value (unless you change its value).
+
+\vskip 1cm
+\filbreak
+{\bf The {\tt while} Command}
+
+\vskip 1mm
+The {\tt while} command allows you to define a command to test and then loop through a set of commands for as long as the test command returns a zero exit status. It test the {\tt test} command at the start of each iteration. When the {\tt test} command returns a non-zero exit status, the {\tt while} command stop executing the set of commands.
+
+$$\vbox{\+\bf while \cleartabs& {\tt test} \bf command \cr
+	\+\bf do \cr
+	\+&\tt other commands \cr
+	\+\bf done \cr}$$
+
+\vskip 1mm
+The {\tt test command} defined in the {\tt while} command is the exact same format as in {\tt if-then} statements. As in the {\tt if-then} statement, you can use any normal bash shell command, or you can use the {\tt test} command to test for conditions, such as variable values.
+
+\vskip 1mm
+The key to {\tt while} commands is that the exit status of the {\tt test command} specified must change, based on the commands run during the loop. If the exit status never changes, the {\tt while} loop will get stuck in an infinite loop.
+
+\vskip 1cm
+\filbreak
+{\bf The {\tt until} Command}
+
+\vskip 1mm
+The {\tt until} command works in exactly the opposite way from the {\tt while} command. The {\tt until} command requires that you specify a test command that normally prodces a non-zero exit status. As long as the exit status of the test command is non-zero, the bash shell executes the commands listed in the loop. When the test command returns a zero exit status, the loop stops.
+
+$$\vbox{\+\bf until \cleartabs& {\tt test commands} \cr
+	\+\bf do \cr
+	\+&\tt other commands \cr
+	\+\bf done \cr}$$
+
+\vskip 1mm
+Similar to the {\tt while} command, you can have more than one {\tt test command}  in the {\tt until} command statement. Only the exit status of the last command determines if the bash shell executes the {\tt other commands} defined.
+
+\filbreak
+\vfill\eject
+\bye

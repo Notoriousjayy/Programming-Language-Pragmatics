@@ -1,0 +1,128 @@
+{\bf Queues}
+\vskip 1mm
+\hrule
+
+\vskip 3mm
+A queue is a {\tt FIFO} (First-In, First-Out) data structure in which the element that is inserted first is the first one to be taken out. The elements in a queue are added at one end called the {\tt REAR} and removed from the other end called the {\tt FRONT}. Queues can be implemented by using either arrays or linked lists.
+
+\filbreak
+\vskip 1cm
+{\bf Operations on Linked Queues}
+
+\vskip 1mm
+A queue has two basic operations:
+\vskip 1mm
+
+\qquad$\bullet$ {\tt insert}
+\vskip 1mm
+\qquad$\bullet$ {\tt delete}
+
+\vskip 3mm
+The {\tt insert} operation adds an element to the end of the queue, and the {\tt delete} operation removes an element from the front or the start of the queue. There is a third operation {\tt peek} which returns the value of the first element of the queue.
+
+\filbreak
+\vskip 1cm
+{\bf Types of Queues}
+
+\vskip 3mm
+\qquad$\bullet$ Circular Queues
+
+\vskip 3mm
+\qquad$\bullet$ Deques
+\vskip 1mm
+\qquad\qquad$\bullet$ A deque is a list in which the elements can be inserted or deleted at either end.
+
+\vskip 3mm
+\qquad$\bullet$ Priority Queues
+
+\vskip 1mm
+\qquad\qquad$\bullet$ A priority queue is a data structure in which each element is assigned a priority.
+
+\vskip 2mm
+\qquad\qquad$\bullet$ The priority of the element will be used to determine the order in which the elements will be
+\vskip 1mm
+\qquad\qquad processed.
+
+\vskip 3mm
+\qquad$\bullet$ Multiple Queues
+
+\filbreak
+\vskip 1cm
+{\bf Implementation of Priority Queues}
+
+\vskip 3mm
+There are two ways to implement a priority queue:
+\vskip 1mm
+\qquad$\bullet$ We can use a sorted list to store the elements
+\vskip 1mm
+\qquad$\bullet$ We can use an unsorted list
+
+\vskip 3mm
+The sorted list takes $O(n)$ time to insert an element, it takes $O(1)$ time to delete an element. An unsorted list takes $O(1)$ time to insert an element and $O(n)$ ti delete an element.
+
+\filbreak
+\vskip 1cm
+{\bf Linked Representation of a Priority Queue}
+
+\vskip 1mm
+When a priority queue is implemented using a linked list, then every node of the list will have three parts:
+
+\vskip 3mm
+(a) the information or data part,
+
+\vskip 1mm
+(b) the priority number of the element, and
+
+\vskip 1mm
+(c) the address of the next element.
+
+\filbreak
+\vskip 1cm
+{\bf Points to Remember}
+
+\vskip 1mm
+$\bullet$ A queue is a FIFO data structure in which the element that is inserted is the first one to be taken out.
+
+\vskip 3mm
+$\bullet$ The elements in a queue are added at one end called the {\tt REAR} and removed from the other end called the {\tt FRONT}.
+
+\vskip 3mm
+$\bullet$ In the computer's memory, queues can be implemented using both arrays and linked lists.
+
+\vskip 3mm
+$\bullet$ The storage requirement of linked representation of queue with $n$ elements is $O(n)$ and the typical time requirement for operations is $O(1)$.
+
+\vskip 3mm
+$\bullet$ In a circular queue, the first index comes after the last index.
+
+\vskip 3mm
+$\bullet$ Multiple queues means to have more than one queue in the same array of sufficient size.
+
+\vskip 3mm
+$\bullet$ A deque is a list in which elements can be inserted or deleted at either end. It is also known as a head-tail linked list because elements can be added to or removed from the front (head) or back (tail). However, no element can be added or deleted from the middle. In the computer's memory, a deque is implemented using either a circular array or a circular doubly linked lisrt.
+
+\vskip 3mm
+$\bullet$ In an input restricted deque, insertions can be done only at one end, while deletions can be done from both the ends. In an output restricted deque, deletions can be done at both ends.
+
+\vskip 3mm
+$\bullet$ A priority queue is a data structure in which each element is assigned a priority. The priority of the element will be used to determine the order in which the elements will be processed.
+
+\vskip 3mm
+$\bullet$ When a priority queue is implemented using a linked list, then every node of the list will have three parts:
+
+\vskip 3mm
+(a) the information or data part,
+
+\vskip 1mm
+(b) the priority number of the element, and
+
+\vskip 1mm
+(c) the address of the next element.
+
+%$$\vbox{\+\bf \cleartabs& \cr
+%	\+\cr
+%	\+\cr
+%	\+\cr}$$
+
+\vfill\eject
+\bye

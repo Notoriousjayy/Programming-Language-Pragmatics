@@ -1,0 +1,100 @@
+{\bf Stacks}
+\vskip 1mm
+\hrule
+
+\vskip 1mm
+
+{\bf Types of Recursion}
+
+\vskip 1cm
+{\bf Direct Recursion}
+
+\vskip 1mm
+A function is directly recursive if it explicitly calls itself.
+
+$$\vbox{\+\tt int\cleartabs&\tt{} Func(int n) $\{$ \cr
+	\+&\tt if\cleartabs&\tt(n == 0)\cr
+	\+&&\tt return n;\cr
+	\+&\tt else\cr
+	\+&&\tt return(Func(n - 1));\cr
+	\+$\}$\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Indirect Recursion}
+
+\vskip 1mm
+A function is indirectly recursive if it contains a call to another function which ultimately calls it.
+
+$$\vbox{\+\tt int\cleartabs&\tt{} Func1(int n) $\{$ \cr
+	\+&\tt if\cleartabs&\tt(n == 0)\cr
+	\+&&\tt return n;\cr
+	\+&\tt else\cr
+	\+&&\tt return(Func2(n));\cr
+	\+$\}$\cr
+	\+\tt int Func2(int x) $\{$\cr
+	\+&\tt return Func1(x - 1);\cr
+	\+$\}$\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Tail Recursion}
+
+\vskip 1mm
+A recursive function is tail recursive if no operations are pending to be performed when the recursive function returns to its caller.
+
+
+$$\hbox{\bf /* Non-tail recursion */}$$
+$$\vbox{\+\tt int\cleartabs&\tt{} Fact(int n) $\{$ \cr
+	\+&\tt return Fact1(n, 1);\cr
+	\+&\tt $\}$\cr
+	\+\tt int Fact2(int n, int res) $\{$\cr
+	\+&\tt if\cleartabs&(n == 1)\cr
+	\+&&\tt return res;\cr
+	\+&\tt else\cr
+	\+&&\tt return(n - 1, n * res);\cr
+	\+$\}$\cr}$$
+
+$$\hbox{\bf /* Tail recursion */}$$
+$$\vbox{\+\tt int\cleartabs&\tt{} Fact(int n) $\{$ \cr
+	\+&\tt if\cleartabs&\tt(n == 1)\cr
+	\+&&\tt return 1;\cr
+	\+&\tt else\cr
+	\+&&\tt return(n * Fact(n - 1));\cr
+	\+$\}$\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Points to Remember}
+
+\vskip 1mm
+$\bullet$ A stack is a linear data structure in which elements are added and removed only from one end, which is called the top. Hence, a stack is called a LIFO (Last-In, First-Out) data structure as the element that is inserted last is the first one to be taken out.
+
+\vskip 1mm
+$\bullet$ In the computer's memory, stacks can be implemented using either linked list or single arrays.
+
+\vskip 1mm
+$\bullet$ The storage requirment or linked representation of stacks with $n$ elements is $O(n)$ and the typical time requirement for operations is $O(1)$.
+
+\vskip 1mm
+$\bullet$ Infix, prefix, and postfix notations are different but equivalent notations of writing algebraic expressions.
+
+\vskip 1mm
+$\bullet$ In postfix notation, operators are placed after the operands, whereas in prefix notation, operators are placed before the operands.
+
+\vskip 1mm
+$\bullet$ Postfix notations are evaluated using stacks. Every character of the postfix expression is scanned from left to right. If the character is an operand, it is pushed onto the stack. Else, if it is an operator, then the top two values are popped from the stack and the operator is applied on these values. The result is then pushedonto the stack.
+
+\vskip 1mm
+$\bullet$ Multiple stacks means to have more than one stack in the same array of sufficient size.
+
+\vskip 1mm
+$\bullet$ A recursive function is defined as a function that calls itself to solve a smaller version of its task until a final call is made which does not require a call to itself. They are implemented using system stack.
+
+%$$\vbox{\+\bf \cleartabs& \cr
+%	\+\cr
+%	\+\cr
+%	\+\cr}$$
+
+\vfill\eject
+\bye

@@ -1,0 +1,128 @@
+{\bf Strings}
+\vskip 1mm
+\hrule
+
+\vskip 1mm
+{\bf Introduction}
+\vskip 1mm
+In C, a string is a null-terminated character array. This means the last character, a null character ('$\backslash 0$') is stored to signify the end of the character array.
+
+\filbreak
+\vskip 1cm
+{\bf Reading Strings}
+\vskip 1mm
+Strings can be read by the user in three ways:
+
+\vskip 1mm
+1. using {\tt scanf} function,
+
+\vskip 1mm
+2. using {\tt gets()} function, and
+
+\vskip 1mm
+3. using {\tt getchar()} repeatedly.
+
+\vskip 1cm
+Strings can be read using {\tt scanf()} by writing
+
+$$\hbox{\tt scanf("$\%$s", str);}$$
+
+where {\tt str} is an array of characters. The main pitfall of using {\tt scanf()} function is that the function terminates as soon as it finds a blank space. You may specify a field width to indicate the maximum number of characters that can be read. Extra characters are left unconsumed in the input buffer.
+
+\vskip 1cm
+The next method of reading a string is by using the {\tt gets()} function. The string can be read by writing
+
+$$\hbox{\tt gets(str);}$$
+
+The {\tt gets()} takes the starting address of the string which will hold the input. The string inputted using {\tt gets()} is automatically terminated with a {\tt null} character.
+
+\vskip 1cm
+Strings can also be read by calling {\tt getchar()} function repeatdely to read a sequence of single characters (unless a terminating character is entered) and simultaneously storing it in a character array
+
+$$\vbox{\+\tt i = 0;() \cr
+	\+\tt ch = getchar; // Get a character\cr
+	\+\tt while\cleartabs& (ch != '*') $\{$\cr
+	\+&\tt str[i] = ch; // Store the read character in str\cr
+	\+&\tt i++;\cr
+	\+&\tt ch = getchar(); Get another character\cr
+	\+\tt $\}$\cr
+	\+\tt str[i] = '$\backslash 0$'; // Get another character\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Writing Strings}
+
+\vskip 1mm
+Stringgs can be displayed on the sceen using the following three ways:
+
+\vskip 1mm
+1. using {\tt printf()} function,
+
+\vskip 1mm
+2. using {\tt puts()} function, and
+
+\vskip 1mm
+3. using {\tt putchar()} function repeatedly.
+
+\vskip 1cm
+Strings can be displayed using {\tt printf()} by writing
+
+$$\hbox{\tt printf("$\%$s", str);}$$
+
+\vskip 1cm
+
+The next method of writing a string is by using the {\tt put()} function. A string can be displayed by writing
+
+$$\hbox{\tt puts(str);}$$
+
+\vskip 1cm
+Strings can also be written by calling the {\tt putchar()} repeatedly to print a sequence of single characters.
+
+$$\vbox{\+\tt i = 0; \cr
+	\+\tt while\cleartabs& (str[i] != '$\backslash 0$') $\{$\cr
+	\+&\tt putchar(str[i]); // Print the character on the screen\cr
+	\+&\tt i++;\cr
+	\+\tt $\}$\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Points To Remember}
+
+\vskip 1mm
+$\bullet$ A string is a null-terminated character array.
+
+\vskip 3mm
+$\bullet$ Individual characters of strings can be accesed using a subscript that starts from zero.
+
+\vskip 3mm
+$\bullet$ All the characters of a string are stored in successive memory locations.
+
+\vskip 3mm
+$\bullet$ Strings can be read by a user using three ways: {\tt scanf()} function, using {\tt gets()} function, or using {\tt getchar()} function repeatedly.
+
+\vskip 3mm
+$\bullet$ The {\tt gets()} function takes the starting address of the string which will hold the input. The string inputted using {\tt gets()} is automatically terminated with a {\tt null} character.
+
+\vskip 3mm
+$\bullet$ Strings can also be read by calling {\tt getchar()} repeatedly to read a sequence of single characters.
+
+\vskip 3mm
+$\bullet$ Strings can be displayed on the screen using three ways: using {\tt printf()} function, using {\tt puts()} function, or using {\tt putchar()} function repeatedly.
+
+\vskip 3mm
+$\bullet$ C standard library supports a number of pre-defined functions for manipulating strings or changing the contents of strings. Many of these functions are defined in the header file {\tt string,h}.
+
+\vskip 3mm
+$\bullet$ Name of a string acts as a pointer to the string. In the declaration {\tt str[5] = "hello";} {\tt str} is a pointer which holds the address of the first character, i.e., 'h'.
+
+\vskip 3mm
+$\bullet$ An array of strings can be declared as {\tt char strings[20][30];} where the first subscript denotes the number of strings and the second subscript denotes the length of every individual string.
+
+
+%$$\vbox{\+\bf \cleartabs& \cr
+%	\+\cr
+%	\+\cr
+%	\+\cr}$$
+
+\vfill\eject
+\bye

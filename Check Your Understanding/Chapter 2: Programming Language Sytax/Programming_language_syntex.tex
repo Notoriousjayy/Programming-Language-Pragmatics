@@ -1,0 +1,646 @@
+\centerline{\bf Programming Language Syntax}
+
+\vskip 1cm
+
+1. What is the difference between syntax and semantics?
+
+\vskip 3mm
+{\bf Answer:} Syntax is the form of a language and Semantics are the meaning of a language.
+
+\filbreak
+\vskip 1cm
+
+2. What are the three basic operations that can be used to build complex regular expressions from simpler regular expressions?
+
+\vskip 3mm
+{\bf Answer:} 
+\vskip 1mm
+\qquad$\bullet$ Concatenation
+\vskip 1mm
+\qquad$\bullet$ Alternation
+\vskip 1mm
+\qquad$\bullet$ Kleene Closure (*)
+
+\filbreak
+\vskip 1cm
+
+3. What additional operations (beyond the three of regular expressions) is provided in context-free grammars?
+
+\vskip 3mm
+{\bf Answer:} Recursion
+
+\filbreak
+\vskip 1cm
+
+4. What is Backus-Naur form? When and why is it devised?
+
+\vskip 3mm
+{\bf Answer:} Backus-Naur form is the notation for context-free grammars. It was devised by John Backus and Peter Naur for the definition of  the Algol-60 programming language.
+
+\filbreak
+\vskip 1cm
+
+5. Name a language in which indentation affects program syntax.
+
+\vskip 3mm
+{\bf Answer:} Python
+
+\filbreak
+\vskip 1cm
+
+6. When discussing context-free languages, what is a derivation? What is a sentential form?
+
+\vskip 3mm
+{\bf Answer:} A series of replacement operations that shows how to derive a string of terminals from the start symbol is called a derivation.
+
+\vskip 2mm
+Each string of symbols along the way are called a sentential form.
+
+\filbreak
+\vskip 1cm
+
+7. What is the difference between a right-most derivation and a left most derivation?
+
+\vskip 3mm
+{\bf Answer:} Right-most derivation expands the right-most nonterminal symbol with the right hand side of some production.
+
+\vskip 2mm
+The Left-most derivation expands the left-most nonterminal symbol with the left hand side of some production
+
+\filbreak
+\vskip 1cm
+
+8. What does it mean for a context-free grammar to be ambiguous?
+
+\vskip 3mm
+{\bf Answer:} A grammar that allows construction of more than one parse tree for some string of terminals is said to be ambiguous.
+
+\filbreak
+\vskip 1cm
+
+9. What are associativity and precedence? Why are they significant in parse trees?
+
+\vskip 3mm
+{\bf Answer:} Associativity tells us that the operators in most languages group left to right. Precedence tells us that multiplication and division in most languages group more tightly than addition and subtraction.
+
+\vskip 2mm
+The significance is evaluating Parse Trees correctly.
+
+\filbreak
+\vskip 1cm
+
+10. List the tasks performed by the typical scanner.
+
+\vskip 3mm
+{\bf Answer:}
+\vskip 1mm
+\qquad$\bullet$ Group input characters into tokens
+\vskip 1mm
+\qquad$\bullet$ Removes Comments
+\vskip 1mm
+\qquad$\bullet$ Saves the text of "interesting" tokens like identifiers, strings, and numeric literals
+\vskip 1mm
+\qquad$\bullet$ Tags tokens with line and column numbers.
+
+\filbreak
+\vskip 1cm
+
+11. What are the advantages of an automatically generated scanner, in comparison to a handwritten one? Why do many commercial compilers use a handwritten anyway?
+
+\vskip 3mm
+{\bf Answer:} The advantages of an automatically generated scanner from a handwritten one are the ease of implementation and compiler development. Commercial compilers use a handwritten scanner because it serves to filter out comments and "white space" which are not meaningful to the parser.
+
+\filbreak
+\vskip 1cm
+
+12. Explain the differences between deterministic and nondeterministic finite automata. Why do we prefer deterministic variety for scanning?
+
+\vskip 3mm
+{\bf Answer:} For Deterministic Finite Automata (DFA), in any given state with a given input character there is never more than one possible outgoing transition labeled by that character.
+
+\vskip 2mm
+A nondeterminstic finite automata (NFA) is like a DFA except
+\vskip 1mm
+(1) there may be more than one transition out of a given state labeled by a given character
+\vskip 2mm
+(2) there may be so-called epsilon transitions: arrows labeled by the empty string symbol $\epsilon$
+
+\vskip 2mm
+We prefer DFAs over NFAs for compilation because we prefer the determinism of DFAs.
+
+\filbreak
+\vskip 1cm
+
+13. Outline the constructions used to turn a set of regular expressions into a minimal DFA.
+
+\vskip 3mm
+{\bf Answer:}
+\vskip 1mm
+(1) Convert the regular expression into a nondeterminstic finite automata (NFA)
+
+\vskip 1mm
+(2) Translate the NFA into an equivalent DFA
+
+\vskip 1mm
+(3) minimize DFA
+
+\filbreak
+\vskip 1cm
+
+14. What is the "longest possible toke" rule?
+
+\vskip 3mm
+{\bf Answer:} The scanner returns to the parser only when the next character cannot be used to continue the current token.
+
+\filbreak
+\vskip 1cm
+
+15. Why must a scanner sometimes "peek" at upcomming characters?
+
+\vskip 3mm
+{\bf Answer:} When a token can validly be extended by two or more additional characters, but not validly for only one character.
+
+\filbreak
+\vskip 1cm
+
+16. What is the difference between a keyword and an identifier?
+
+\vskip 3mm
+{\bf Answer:} keywords or reserved words  are reserved for special purpose. Identifiers are not.
+
+\filbreak
+\vskip 1cm
+
+17. Why must a scanner save the text of tokens?
+
+\vskip 3mm
+{\bf Answer:} A scanner must save the text of tokens for the use of string literals, numeric values, variable names, for error messages, etc.
+
+\filbreak
+\vskip 1cm
+
+18. How does a scanner identify lexical errors? How does it respond?
+
+\vskip 3mm
+{\bf Answer:} A scanner identifies a lexical error in cases where the next character of input may be neither an acceptable continuation of the current token nor the start of another token.
+
+\vskip 2mm
+The scanner responds by printing an error message and perform some sort of recovery so that compilation can continue. The common approaches are:
+
+\vskip 1mm
+\qquad$\bullet$ Throw away the current; invalid token
+
+\vskip 1mm
+\qquad$\bullet$ Skip forward until a character is found that can legitimately begin a new token
+
+\vskip 1mm
+\qquad$\bullet$ Restart the scanning algorithm
+
+\vskip 1mm
+\qquad$\bullet$ Count on the error recovery mechanism of the parser to cope with any cases in which the resulting sequence of tokens is not syntactically valid.
+
+\filbreak
+\vskip 1cm
+
+19. What is a pragma?
+
+\vskip 3mm
+{\bf Answer:} A pragma provides hints to the compiler. Pragamas do not change program semantics---only the compilation process. Pragmas are sometimes called significant comments.
+
+\filbreak
+\vskip 1cm
+
+20. What is the inherent "big-O" complexity of parsing? What is the complexity of parsers used in real compilers?
+
+\vskip 3mm
+{\bf Answer:} The inherent big-O complexity for parsing an CFG in $O(n^3)$. Complixity of parsers used in real compilers are $O(n)$.
+
+\filbreak
+\vskip 1cm
+
+21. Summarize the difference beteen LL and LR parsing. Which one of them is also called "bottom-up"? "Top-down"? Which one is also called "predictive"? "Shift-reduce"? What do "{\tt LL}" and "{\tt LR}" stand for?
+
+\vskip 3mm
+{\bf Answer:} For the LL class of parsering algorithms the derivation is the lest-most, for the LR class of parsing algorithms the derivation is right-most. The LR class constructs bottom up Parse Trees and algorithms used are called shift-reduce. The LL class construct Parse Trees top-down and algorithms used are called predictive.
+
+\filbreak
+\vskip 1cm
+
+22. What kinds of parser (top-down or bottom-up) is most common in production compilers?
+
+\vskip 3mm
+{\bf Answer:} LR parsers are more common in production compilers.
+
+\filbreak
+\vskip 1cm
+
+23. Why are right-most derivations sometimes called canonical?
+
+\vskip 3mm
+{\bf Answer:} LR parsers call sometimes called canonical because they recieved formal study before LL Parsers.
+
+\filbreak
+\vskip 1cm
+
+24. What is the significance of the "1" in {\tt LR(1)}?
+
+\vskip 3mm
+{\bf Answer:} The number inside the parentheses indicated how many tokens of look-ahead are required in order to parse.
+
+\filbreak
+\vskip 1cm
+
+25. Why might we want (or need) different grammars for different parsing algorithms?
+
+\vskip 3mm
+{\bf Answer:} LL parsers cannot parse left recursive grammars.
+
+\filbreak
+\vskip 1cm
+
+26. What is an epsilon production.
+
+\vskip 3mm
+{\bf Answer:} A production with $\epsilon$ on the right-hand side is called an epsilon production.
+
+\filbreak
+\vskip 1cm
+
+27. What are recursive descent parsers? Why are they used mostly for small languages?
+
+\vskip 3mm
+{\bf Answer:} a Recursive Descent parser builds a parse tree top down using recursive subroutines to parse non-terminals of the grammar. With power of recursion larger langauges will grow exponentially.
+
+\filbreak
+\vskip 1cm
+
+28. How might a parser construct an explicit parse tree or syntax tree?
+
+\vskip 3mm
+{\bf Answer:} A parser produced an abstract syntax tree from a concrete  parse tree.
+
+\filbreak
+\vskip 1cm
+
+29. Describe two common idioms in context-free grammars that cannot be parsed top-down.
+
+\vskip 3mm
+{\bf Answer:} Left recursion and common prefixes
+
+\filbreak
+\vskip 1cm
+
+30. What is the "dangling {\tt else}" problem? How is it avoided in modern languages?
+
+\vskip 3mm
+{\bf Answer:} The dangling else problem in computer science in which an optional else clause in an {\tt if-then-else} statement results in nested conditionals being ambiguous. most modern languages require explicit end markers on all structured statements.
+
+\filbreak
+\vskip 1cm
+
+31. Discuss the similarities and differences between recursive descent and table-driven top-down parsing.
+
+\vskip 3mm
+{\bf Answer:} Recursive descent relies on subroutines to match and maintain an implicit call stack.
+
+\vskip 1mm
+A table driven LL parser uses a stack that contains the upcoming calls. Stack maintains a list of symbols that the parser expects to see from here to the end of the program.
+
+\filbreak
+\vskip 1cm
+
+32. What are {\tt FIRST} and {\tt FOLLOW} sets? What are they used for?
+
+\vskip 3mm
+{\bf Answer:} The {\tt FIRST} sets are the set of all tokens that could be the start of a non-terminal. and {\tt FOLLOW} is the set of all tokens that could come after a non-terminal in some valid program.
+
+
+\filbreak
+\vskip 1cm
+
+33. Under what circumstances does a top-down parser predict the production $A\longrightarrow\alpha$
+
+\vskip 3mm
+{\bf Answer:} {\tt PREDICT$(A\to\alpha\equiv$FIRST($\alpha$)$\cup$(if EPS($\alpha$)then FOLLOW($A$) else $\emptyset)$}
+
+\filbreak
+\vskip 1cm
+
+34. What sorts of "obvious" facts form the basis of {\tt FIRST} and {\tt FOLLOW} set construction?
+
+
+\vskip 3mm
+{\bf Answer:} If we extend the domain of {\tt FIRST} in the obvious way to include strings of symbols, we then say that the predict set of a production $A\to\beta$ is {\tt FIRST$(\beta)$}, plus {\tt FOLLOW$(A)$} if $\beta\Longrightarrow^*\epsilon$
+
+\filbreak
+\vskip 1cm
+
+35. Outline the algorithm used to complete the construction of {\tt FIRST} and {\tt FOLLOW} sets. How do we know when we are done?
+
+\vskip 3mm
+{\bf Answer:} For the {\tt FOLLOW} set we find all instances of a given non-terminal on the right-hand side of all the productions. Then look directly to the right of it. If it is a non-terminal, add elements of that's {\tt FIRST} set else just add the terminal
+
+\vskip 1mm
+For the {\tt FIRST} set, for each non-terminal, if the initial entry is a terminal add it to set. Otherwise if it's a non-terminal, recurse and find the first terminal. If it is epsilon find the terminal after it.
+
+\filbreak
+\vskip 1cm
+
+36. How do we know when a grammar is not {\tt LL(1)}?
+
+\vskip 3mm
+{\bf Answer:} If in the process of calculating {\tt PREDICT} sets we find that some token belongs to the {\tt PREDICT} set of more than one production with the same left-hand side, then the grammar is not {\tt LL(1)}
+
+\filbreak
+\vskip 1cm
+
+37. What is the handle of a right sentential form?
+
+\vskip 3mm
+{\bf Answer:} The roots of the partial subtrees, left-to-right, together with the remaining output, constitute a sentential form of the right-most derivation.
+
+\vskip 1mm
+ The symbols that need to be joined together at each step of the parse to represent the next step of the backward derivation are called the handle of the sentential form.
+
+\filbreak
+\vskip 1cm
+
+38. Explain the significance of the characteristic finite-state machine in {\tt LR} parsing.
+
+\vskip 3mm
+{\bf Answer:} The significance of the CFSM in parsing are the family of algorithms deal with  states that contain a shift-reduce problem.
+
+\filbreak
+\vskip 1cm
+
+39. What is the significance of the dot ($\bullet$) in an {\tt LR} state?
+
+\vskip 3mm
+{\bf Answer:} The significance of the $\bullet$ in an {\tt LR} state is we can represent our location---more specifically the location represented by the top of the parse stack.
+
+\filbreak
+\vskip 1cm
+
+40. What distinguishes the basis from the closure of an {\tt LR} state?
+
+\vskip 3mm
+{\bf Answer:} The orginal item in out production list is called the basis, the additional items are its closure.
+
+\filbreak
+\vskip 1cm
+
+41. What is a shift-reduce conflict? How is it resolved in the various kinds of {\tt LR}-family parsers.
+
+\vskip 3mm
+{\bf Answer:} The shift-reduce problem conflict is when one item with the $\bullet$ in front of a terminal and another with the $\bullet$ at the end of the right-hand side. {\tt LR(0)} parsers use end markers to reslove this isse. {\tt SLR} parsers peek at upcomming input and use {\tt FOLLOW} sets to resolve conflicts.
+
+\filbreak
+\vskip 1cm
+
+42. Outline the steps performed by the driver of a bottom-up parser.
+
+\vskip 3mm
+{\bf Answer:} Bottom-up parsers execute a loop in which it repeatedly inspects a two-dimensional table to find out what action to take. Instead of using the current input token and top-of-stack non-terminal to index into the table, an {\tt LR}-family parser uses the current input token and the current parser state that should be popped and the non-terminal that should be pushed back onto the input stream, to be shifted by the state uncovered by pops.
+
+\filbreak
+\vskip 1cm
+
+43. What kind of parser is produced by {\tt yacc/bison}? By {\tt ANTLR}?
+
+\vskip 3mm
+{\bf Answer:} C code in produced by {\tt yacc/bison} parsers.
+
+\filbreak
+\vskip 1cm
+
+44. Why are there never any epsilon productions in an {\tt LR(0)} grammar?
+
+\vskip 3mm
+{\bf Answer:} There are never any epsilon productions in {\tt LR(0)} grammars because we wont be able to tell whether to "recognize" $\epsilon$ without peeking ahead.
+
+\filbreak
+\vskip 1cm
+
+45. Why is syntax error recovery important?
+
+\vskip 3mm
+{\bf Answer:} Syntax error recovery is important because we need to be able to continue looking for errors in the remainder of the program once an error occurs.
+
+\filbreak
+\vskip 1cm
+
+46. What are cascading errors?
+
+\vskip 3mm
+{\bf Answer:} Cascading errors are when one error casues another error.
+
+\filbreak
+\vskip 1cm
+
+47. What is panic mode? What is its principal weakness?
+
+\vskip 3mm
+{\bf Answer:} Panic mode is the simplest form of error recovery. It defines a small set of "safe symbols" that delimit clean points in the input. When an error occurs, a panic mode recovery algorithm deletes input tokens until it finds a safe symbol, then backs the parser out to a context in which that symbol might appear. Its main weakness is its dramatic. By limiting itself to a static set of "safe" symbols at which to resume parsing, it is possible to delete a significant amount of code looking for a "safe" symbol.
+
+\filbreak
+\vskip 1cm
+
+48. What is the advantage of phrase-level recovery over panic mode?
+
+\vskip 3mm
+{\bf Answer:} The advantage to phrase-level recovery over panic mode is; when it discovers an error in an expression, a phrase-level recovery algorithm can delete input tokens until it reaches  something that is likely to follow an expression.
+
+\filbreak
+\vskip 1cm
+
+49. What is the immediate error detection problem, and how can it be addressed?
+
+\vskip 3mm
+{\bf Answer:} The immediate error detection problem is the phrase-level recovery algorithm has a tendency when {\tt foo$\longrightarrow\epsilon$}, to predict one or more epsilon productions when it should really announce an error right away. Wirth addressed this problem with context-specific {\tt FOLLOW} sets, passed into eaqch non-terminal subroutine as an explicit parameter.
+
+\filbreak
+\vskip 1cm
+
+50. Describe two situations in which context-specific {\tt FOLLOW} sets may be useful.
+
+\vskip 3mm
+{\bf Answer:}
+\vskip 1mm
+\qquad$\bullet$ Phrase-level Recovery
+\vskip 1mm
+\qquad$\bullet$ Immediate error detection problem
+
+\filbreak
+\vskip 1cm
+
+51. Outline Wirth's mechanism for error recovery in recursive descent parsers. Compare this mechanism to exception-based recovery.
+
+\vskip 3mm
+{\bf Answer:} Niklaus Wirth's error recovery in recursive descent parsers outline.
+
+$$\vbox{\+\tt procedure \cleartabs&\tt foo() \cr
+	\+& if not\cleartabs&\tt$\bigl($input$\_$token $\in$ FIRST(foo) or EPS(foo)$\bigr)$\cr
+	\+&&\tt report$\_$error()\cr
+	\+&&\tt repeat\cleartabs&\cr
+	\+&&&\t delete$\_$token()\cr
+	\+&&\tt until input$\_$token $\in$ $\bigl($FIRST(foo)$\cup$ FOLLOW(foo) $\cup$ $\{\$\$\}\bigr)$\cr
+	\+&\tt case input$\_$token of\cr
+	\+&&&\tt $\cdots$\cr
+	\+&&&\tt $\cdots$\cr
+	\+&&&\tt $\cdots$\cr
+	\+&&&\tt otherwise return\cr
+	\+\cr}$$
+
+Wirth's exception based recovery
+
+$$\vbox{\+\tt procedure \cleartabs&\tt statement()\cr
+	\+&\tt try\cleartabs&\cr
+	\+&&\tt $\cdots$\cr
+	\+&\tt except when syntax$\_$error\cr
+	\+&&\tt loop\cleartabs&\cr
+	\+&&&\tt if next$\_$token\cleartabs&\tt $\in$ FIRST(statement)\cr
+	\+&&&&\tt statement()\cr
+	\+&&&&\tt return\cr
+	\+&&&\tt elsif next$\_$token $\in$ FOLLOW(statement)\cr
+	\+&&&&\tt return\cr
+	\+&&&\tt else get$\_$token()\cr
+	\+\cr}$$
+The exception based approach identifies a small set of contexts to which we back out in the event of an error.
+
+\filbreak
+\vskip 1cm
+
+52. What are error productions? Why might a parser that incorporates a high-quality, general-purpose error recovery algorithm still benefit from using such productions?
+
+\vskip 3mm
+{\bf Answer:} Error productions are about recovering from an error to continue processing the input. High-quality, general-purpose error recovery algorithms still benefit from these productions becasue allows the analyzer to print a warning message 
+
+\filbreak
+\vskip 1cm
+
+53. Outline the FMQ algorithm. In what sense is the algorithm optimal?
+
+\vskip 3mm
+{\bf Answer:}
+$$\hbox{\bf /*Outline of a function to find a least-cost insertion that will allow}$$
+$$\hbox{\bf * the parser to accept the input token $a$ */}$$
+$$\vbox{\+\tt function \cleartabs&\tt find$\_$insertions(a: token): string \cr
+	\+&\bf-- assume that the parse stack consists of symbols $X_n,\ldots, X_2, X_1$\cr
+	\+&\bf-- with $X_n$ at top-of-stack \cr
+	\+&\tt ins:=??\cr
+	\+&\tt prefix:=$\epsilon$\cr
+	\+&\tt for $i$ \cleartabs& in $n..1$\cr
+	\+&&\tt if C(prefix)\cleartabs&$\geq$C(ins)\cr
+	\+&&&\bf-- no better insertion is possible\cr
+	\+&&&\tt return\cr
+	\+&&\tt if C(prefix.$E(X_i,a$)$<$C(ins)\cr
+	\+&&&\bf -- better insertion found\cr
+	\+&&&\tt ins := prefix.$E(X_i,a)$\cr
+	\+&&\tt prefix:= prefix.$S(X_i)$\cr
+	\+&\tt return\cr
+	\+\cr}$$
+
+$$\hbox{\bf /* Outline of a function to find a least-cost combination of insertions and deletions}$$
+$$\hbox{\bf * that will allow the parser to accept one more token of input */}$$
+
+$$\vbox{\+\tt function \cleartabs&\tt find$\_$repair(): $\langle$ string, int $\rangle$\cr
+	\+&\bf -- asume that the parse stack consists of symbols $X_n,\ldots, X_2, X_1$\cr
+	\+\&bf -- with $X_n$ at top-of-stack\cr
+	\+&\bf -- and that the input stream consists of tokens $a_1, a_2, a_3,\ldots$\cr
+	\+&\tt i:=0\cr
+	\+&\tt best$\_$ins := ??\cr
+	\+&\tt best$\_$del := 0\cr
+	\+&\tt loop\cleartabs&\cr
+	\+&&\tt cur$\_$ins := find$\_$insertion($a_{i+1})$\cr
+	\+&&\tt if C(cur$\_$ins)\cleartabs& + D($a_1\ldots a_i$) $<$ C(best$\_$ins) + D($a_1\ldots a_{\hbox{\tt best$\_$del}}$)\cr
+	\+&&&\bf -- better repair found\cr
+	\+&&&\tt best$\_$ins := cur$\_$ins\cr
+	\+&&&\tt best$\_$del := i\cr
+	\+&&\tt i+= 1\cr
+	\+&&\tt if D($a_1\ldots a_i$) $>$ C(best$\_$ins) + D($a_1\ldots a_{\hbox{\tt best$\_$del}}$)\cr
+	\+&&&\bf -- no better repair is possible\cr
+	\+&&&\tt return $\langle$ best$\_$ins, best$\_$del $\rangle$\cr
+	\+\tt\cr}$$
+
+The FMQ algorithm is simple and efficient. It can repair an arbitrary input string. Its decisions are locally optimal, in the sense that no cheap repair can allow the parser to make forward progress.
+
+
+\filbreak
+\vskip 1cm
+
+54. Why is error recovery more difficult in bottom-up parsers than it is in top-down parsers?
+
+\vskip 3mm
+{\bf Answer:} The stack of a bottom-up parsers describes a set of possible context, and says nothing about the future. The stack in top-down parsers unambiguously identifies the context of an error, and specifies the constructs expected in the future.
+
+\filbreak
+\vskip 1cm
+
+55. Describe the error recovery mechanism by {\tt yacc/bison}.
+
+\vskip 3mm
+{\bf Answer:} {\tt yacc/bison} are typical bottom-up phrase-level recovery. In addition to the usual tokens of the language, {\tt yacc/bison} allows the compiler writer to include a special token, {\tt error}, anywhere in the right-hand sides of grammar productions.
+
+\filbreak
+\vskip 1cm
+
+56. What formal machine captures the behvaior of a scanner? A parser?
+
+\filbreak
+\vskip 1cm
+
+57. State three ways in which a real scanner differs from the formal machine.
+
+\filbreak
+\vskip 1cm
+
+58. What are the formal components of a DFA?
+
+\filbreak
+\vskip 1cm
+
+59. Outline the algorithm used to construct a regular expresion equivalent to a given DFA.
+
+\filbreak
+\vskip 1cm
+
+60. What is the inherent "big-O" complexity of parsing with a simulated NPDA? Why is this worse than the $O(n^3)$ time mentioned in Section 2.3?
+
+\filbreak
+\vskip 1cm
+
+61. How many states are there in an {\tt LL(1)} PDA? Explain.
+
+\filbreak
+\vskip 1cm
+
+62. What are the variable prefixes of a CFG?
+
+\filbreak
+\vskip 1cm
+
+63. Summarize the proof that a DFA cannot recognize arbitrarily nested constructs.
+
+\filbreak
+\vskip 1cm
+
+64. Explain the difference between {\tt LL} and {\tt SLL} parsing.
+
+\filbreak
+\vskip 1cm
+
+65. Is every {\tt LL(1)} grammar also {\tt LR(1)}? Is it {\tt LALR(1)}?
+
+\filbreak
+\vskip 1cm
+
+66. Does every {\tt LR} language have an {\tt SLR(1)} grammar?
+
+\filbreak
+\vskip 1cm
+
+67. Why are the containment relationships among grammar classes more complex than those among language classes?
+
+\filbreak
+\vfill\eject
+\bye

@@ -1,0 +1,21 @@
+This is TeX, Version 3.14159265 (TeX Live 2019/dev/Debian) (preloaded format=tex 2019.8.14)  11 MAY 2020 19:28
+**Modules
+(./Modules.tex
+Underfull \vbox (badness 8038) has occurred while \output is active
+\vbox(643.20255+1.94444)x469.75499, glue set 4.31679
+.\glue(\topskip) 3.05556
+.\hbox(6.94444+0.0)x469.75499, glue set 406.98994fil
+..\hbox(0.0+0.0)x20.0
+..\tenbf M
+..\tenbf o
+..\kern0.31944
+..\tenbf d
+..etc.
+.\glue 2.84526
+.\rule(0.4+0.0)x*
+.\glue 6.0
+.etc.
+
+ [1]
+[2] )
+Output written on Modules.dvi (2 pages, 4516 bytes).

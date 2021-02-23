@@ -1,0 +1,87 @@
+\nopagenumbers
+\centerline{{\bf Strucutres in C}}
+
+\vskip 1mm
+
+\vskip 1cm
+{\bf Basics of Structures}
+\vskip 1mm
+\hrule
+\vskip 1mm
+A {\bf structure} is a collection of one or more variables, possibly of different types, group together under a single name. Structures permit a group of related variables to be treated as a unit instead of separate entities.
+\filbreak
+
+\vskip 1cm
+A structure for a 2D-point in space. The Two components can be placed in a structure declared like this:
+
+$$\vbox{\+\bf\tt struct\cleartabs&\bf{} point $\{$ \cr
+	\+&\bf{\tt int} x;\cr
+	\+&\bf{\tt int} y;\cr
+	\+$\}$;\cr}$$
+
+The keyword {\tt struct} introduces a structure declaration, which is a list of declarations enclosed in braces. An optional name called a {\bf structure tag} ({\tt point} is the tag above) may follow the word {\tt struct}. The tag names this kind of structure, and can be used subsequently as a shorthand for the part of the declaration in braces.
+\filbreak
+
+\vskip 1cm
+The variables named in a strucute are called {\bf members}. A structure member or tag and an ordinary (non-member) variable can have the same name without conflict.
+
+\filbreak
+
+\vskip 1cm
+A {\tt struct} declaration defines a type. The right brace that terminates the list of members may be followed by a list of variables, just as any basic type. That is,
+
+$$\hbox{{\tt struct $\{\quad\cdots\quad\}$ x, y, z;}}$$
+\filbreak
+\vskip 1cm
+If the strucute declaration is tagged, the tag can be used later in definitions of instances of the strucute.
+
+$$\hbox{{\tt sturct point pt;}}$$
+
+defines a variable {\tt pt} which is a structure of type {\tt struct point}. A structure can be initialized by following its definition with a list of initializers, each a constant expression, for members:
+
+$$\hbox{{\tt struct point maxpt = $\{$ 320, 200 $\}$;}}$$
+
+\filbreak
+\vskip 1cm
+A member of a particular structure is referred to in an expression by a construction of the form
+
+$$\hbox{{\tt structure-name.member}}$$
+
+The structure member operator '.' connectes the structure name and the member name.
+
+\filbreak
+\vskip 1cm
+{\bf Structures and Functions}
+\vskip 1mm
+\hrule
+
+\vskip 1mm
+The only legal operations on a structure are copying it or assigning to it as a unit, taking its address with $\&$, and accessing its members. Copy and assignment include passing arguments to functions and returning values from functions. Structures may not be compared. A structure may be initialized by a list of constant member values; an automatic structure may also be initialized by an assignment.
+
+\filbreak
+\vskip 1cm
+The declaration
+$$\hbox{{\tt struct point *pp;}}$$
+
+says that {\tt pp} is a pointer to a structure of type {\tt struct point}. If {\tt pp} points to a {\tt point} structure, {\tt *pp} is the structure, and {\tt (*pp).x} and {\tt (*pp).y} are the members.
+
+\filbreak
+\vskip 1cm
+If {\tt p} is a pointer to a strucute, then
+
+$$\hbox{{\tt p -> member-of-structure}}$$
+
+refers to a particular member.
+%
+% I skipped section 6.3 on Arrays of Structures go back and compelete as nessecarry. and place here
+%
+\filbreak
+\vskip 1cm
+{\bf Pointers to Strucutres}
+\vskip 1mm
+\hrule
+\vskip 1mm
+
+\filbreak
+\vfill\eject
+\bye

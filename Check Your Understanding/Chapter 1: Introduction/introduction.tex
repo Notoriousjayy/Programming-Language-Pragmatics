@@ -1,0 +1,298 @@
+\centerline{\bf Introduction}
+
+\vskip 1cm
+
+1. What is the difference between machine language and assembly language?
+
+\vskip 3mm
+
+{\bf Answer:} A Machine language is the sequence of bits that directly controls a processor. An Assembly language is a one-to-one correspondence between mnemonics and machine language instructions.
+
+\filbreak
+\vskip 1cm
+
+2. In what way(s) are high-level language an improvement on assembly language? Are there circumstances in which it still make sense to program in assembler?
+
+\vskip 3mm
+
+{\bf Answer:} High-level languages was an improvement over assembly languages by allowing machine-independent language programs to be written, particularly one in which numerical computations could be expressed resembling mathematical formulae.
+
+\filbreak
+\vskip 1cm
+3. Why are there so many programming languages?
+
+\vskip 3mm
+
+{\bf Answer:} Evolution---Computer Science is new and constantly evolving, Special Purposes---for a specific problem domain, and Personal Preference.
+
+\filbreak
+\vskip 1cm
+4. What makes a programming language successful?
+
+\vskip 3mm
+{\bf Answer:} Expressive Power, Ease of use for Novice, Ease of Implementation, Standardization, Open Source, Excellent Compilers, Econoomics, Patronage and Inertia.
+
+\filbreak
+\vskip 1cm
+
+5. Name three languages in each of the following categories: von Neumann, functional, object-oriented. Name two logic languages. Name two widely used concurrent languages.
+
+\vskip 3mm
+{\bf Answer:} {\bf Von Neumann}: C, Ada, Fortran
+
+\vskip 1mm
+{\bf Functional}: Lisp/Scheme, ML, Haskell
+
+\vskip 1mm
+{\bf Object-Oriented}: Smalltalk, Eiffel, Java
+
+\vskip 1mm
+{\bf Logic}: Prolog, SQL
+
+\vskip 1mm
+{\bf Concurrent}: Java, C$\#$.
+
+\filbreak
+\vskip 1cm
+
+6. What distinguishes declarative languages from imperative languages?
+
+\vskip 3mm
+{\bf Answer:} Declarative languages focus on what the computer should compute. Declarative languages are in some sense "higher level"; they are more in tune with the programmers point of view.
+
+\vskip 2mm
+Imperative languages focus on how the computer should do computation.
+
+\filbreak
+\vskip 1cm
+
+7. What organization spearheaded the development of Ada?
+
+\vskip 1mm
+{\bf Answer:} U.S. Department of Defense
+
+\filbreak
+\vskip 1cm
+
+8. What is generally considered the first high-level programming language?
+
+\vskip 3mm
+{\bf Answer:} Fortran
+
+\filbreak
+\vskip 1cm
+
+9. What was the first functional language?
+
+\vskip 3mm
+{\bf Answer:} Lisp
+
+\filbreak
+\vskip 1cm
+
+10. Why aren't concurrent languages list as a separate family in Figure 1.1?
+
+\vskip 3mm
+{\bf Answer:} the distinction between concurrent and sequential languages is mostly independent of the classification. Most concurrent programs are currently written using special library packages or compilers in conjunction with sequential language such as Fortran or C.
+
+
+\filbreak
+\vskip 1cm
+
+11. Explain the distinction between interpretation and compilation. What are the comparative advantages and disadvantages of the two approaches?
+
+\vskip 3mm
+{\bf Answer:} The compiler translates the high-level source program into an equivalent target program (typically in machine language), and then goes away. The interpreter stays around for the execution of the application.
+
+\vskip 2mm
+In general, interpretation leads to greater flexibility and better diagnostics (error messages) than does compilation. Interpretation also copes with languages in which fundamental characteristics of the program, such as the size and types of variables, or even which names refer to which variables, can depend on the input size. Compilation leads to better performance. An interpreter needs to look up a variables location on every occurence. A compiler compiles a variable once and guarantee its location.
+
+\filbreak
+\vskip 1cm
+
+12. Is Java compiled or interpreted (or both)? How do you know?
+
+\vskip 3mm
+
+{\bf Answer:} Java is both interpreted and compiled. Java code is compiled down  to Java Byte code. Then the Java byte code then executed on the JVM.
+
+
+\filbreak
+\vskip 1cm
+
+13. What is the difference between a compiler and a preprocessor?
+
+\vskip 3mm
+{\bf Answer:} A Preprocessor's goal is to produce an intermediate form that mirrors the structure of the source.A compiler thoroughly analyzes the code and produces a intermediate form that does not bear resemblence to the source.
+
+\vskip 2mm
+compilers attempt to "understand" their source; preprocessors do not. Preprocessors perform transformations based on simple pattern matching, and may produce output that will generate error messages when run through a subsequent stage of translation.
+
+\filbreak
+\vskip 1cm
+
+14. What was the intermediate form employed by the original AT$\&$T C++ compiler?
+
+\vskip 3mm
+{\bf Answer:} The original AT$\&$T C++ compiler generated C code.
+
+
+\filbreak
+\vskip 1cm
+15. What is P-code?
+
+\vskip 3mm
+
+a stack-based language similar to the bytecode of modern Java compilers.
+
+\filbreak
+\vskip 1cm
+
+16. What is bootstrapping?
+
+\vskip 3mm
+{\bf Answer:} Most compilers are self-hosting: they are written in the language they compile. In a nutshell, to bootstrap a compile, one starts with a simple implementation---often an interpreter---and use it to build progressively more sophisticated versions.
+
+\filbreak
+\vskip 1cm
+17. What is a just-in-time compiler?
+
+\vskip 3mm
+{\bf Answer:} Just-in-time compilation invoke the compiler on the fly, to translate newly created source into machine language commonly bytecode to machine language.
+\filbreak
+\vskip 1cm
+
+18. Name two languages in which a program can write new pieces of itself "on the fly"
+
+\vskip 3mm
+{\bf Answer:} Lisp and Prolog
+
+\filbreak
+\vskip 1cm
+
+19. Briefly describe three "unconventional" compilers---compilers whose purpose is not to prepare a high-level program for execution on a general-purpose processor.
+
+\vskip 3mm
+{\bf Answer:} \TeX compile high-level document descriptions into commands for a laser printer or phototypesetter.
+
+\vskip 2mm
+Query language processors for database systems translate languages like SQL into primitive operation on files.
+
+\vskip 2mm
+Compilers that translatelogic-level circuit specifications into photographic masks for computer chips.
+
+\filbreak
+\vskip 1cm
+
+20. List six kinds of tools that commonly support the work of a compiler within a larger programming environment.
+
+\vskip 3mm
+$\bullet$ Debuggers
+
+\vskip 2mm
+$\bullet$ Style Checkers
+
+\vskip 2mm
+$\bullet$ Configuration management
+
+\vskip 2mm
+$\bullet$ Perusal Tools
+
+\vskip 2mm
+$\bullet$ Profilers
+
+$\bullet$ Preprocessors
+
+\filbreak
+\vskip 1cm
+21. Explain how an integrated development environment (IDE) differs from a collection of comman-line tools.
+
+\vskip 3mm
+{\bf Answer:} The editor for an IDE may incorporate knowledge of language syntax, providing templates for all the standard control structures, and checking syntax as it is typed in. Internally, the IDE likely maintains not only a program's source and object code, but also a partially compiled internal representation.
+
+\filbreak
+\vskip 1cm
+
+22. List the principal phases of compilation, and describe the work performed by each.
+
+\vskip 3mm
+{\bf Answer:} {\bf Scanner}---also known as lexical analysis. The principal purpose of the scannr is to simplify the task of the parser, by reducing the size of the input and by removing extraneous characters like whitespace. The scanner typically removes comments and tags tokens with line and column numbers, to make it easier to generate good diagnostics in later phases.
+
+\vskip 1mm
+{\bf Parsers} organize tokens into a parse tree that represents  higher-level constructs (statements, expressions, subroutines, etc) in terms of their constituents following a context-free grammar.
+
+\vskip 1mm
+{\bf Semantic Analysis}---is the discovery of meaning in a program. The semantic analyzer recognizes when multiple occurrences of the same identifer are meant to refer to the same program entity, and ensures that the uses are consistent. Most languages the semantic analyzer also tracks the types of both identifiers and expressions. The semantic anaylzer typically builds and maintains a {\bf symbol table} data structure.
+
+\vskip 1mm
+{\bf Target Code Generation}---translates the intermediate form into the target language.
+
+\filbreak
+\vskip 1cm
+
+23. List the phases that are also executed as part of interpretation.
+
+\vskip 3mm
+{\bf Answer:} The front end of an interpreter is the same a compiler {\bf Scanner (Lexical analysis), Parser (syntax analysis), Semantic analysis and intermediate code generation, and tree walking routines}--- which "executes" (interprets) the intermediate code directly.
+
+\filbreak
+\vskip 1cm
+
+24. Describe the form in which a program is passed from the scanner to the parser; from the parser to the semantic analyzer; from the semantic analyzer to the intermediate code generator.
+
+\vskip 3mm
+{\bf Answer:} The {\bf scanner} takes in a Character stream and out puts a Token Stream.
+
+\vskip 2mm
+The {\bf parser} takes in a token stream and outputs a Parse Tree.
+
+\vskip 2mm
+The {\bf semantic analyzer} takes in a parse tree and outputs a Abstract Syntax tree or some other intermediate form.
+
+\vskip 2mm
+The {\bf Target Code generator} takes in some intermediate form and outputs a modified target language.
+\filbreak
+\vskip 1cm
+
+25. What distinguishes the front end of a compiler from the back end?
+
+\vskip 3mm
+{\bf Answer:} The front-end serves to figure out the meaning of the source program. The back-end serves to construct an equivalent target program.
+
+\filbreak
+\vskip 1cm
+
+26. What is the difference between a phase and a pass of compilation? Under what circumstances does it make sense for a compiler to have multiple passes?
+
+\vskip 3mm
+{\bf Answer:} A phase discovers information of use to later phases. A pass is a phase or set of phases that is serialized with respect to the rest of compilation.
+
+\filbreak
+\vskip 1cm
+
+27. What is the purpose of the compiler's symbol table?
+
+\vskip 3mm
+
+{\bf Answer:} a symbol table that maps each identifer to the information known about it. Among other things, this information includes the identifer's type, internal structure (if any), and scope.
+
+\filbreak
+\vskip 1cm
+
+28. What is the difference between static and dynamic semantics?
+
+\vskip 3mm
+{\bf Answer:} Semantic rules that can be checked at compile time (or in the front-end of the compiler) are static semantics. Semantic rules that must be checked at run time (or in later phases of an interpretation) are dynamic semantics.
+
+\filbreak
+\vskip 1cm
+
+29. On modern machines, do assembly language programmers still tend to write better code than a good compiler can? Why or why not?
+
+\vskip 3mm
+{\bf Answer:} On a modern machine a compiler will generate better code than assembly language programmers. Due to increases in hardware complexitiy and continuing improvements in compiler technology.
+
+
+\filbreak
+\vfill\eject
+\bye

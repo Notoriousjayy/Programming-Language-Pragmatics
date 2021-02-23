@@ -1,0 +1,489 @@
+{\bf Hashing and Collision}
+\vskip 1mm
+\hrule
+
+\vskip 3mm
+{\bf Hash Tables}
+
+\vskip 1mm
+Hash table is a data structure in which keys are mapped to array positions by a has function. A value stored in a hash table can be searched in $O(1)$ time by using a hash function which generates an address from the key.
+
+\vskip 1mm
+Wheb the set $K$ of keys that are actually used is smaller than the universe of keys $(U)$, a hash table consumes less storage space. The storage requirement for a hash table is $O(k)$, where $k$ is the number of keys actually used.
+
+\vskip 1mm
+In a hash table, an element with key $k$ is stored at index $h(k)$ and not $k$. It means a hash function $h$ is used to calculate the index at which the element key $k$ will be stored. The process of mapping the keys to appropriate locations (or indices) in a hash table is called {\bf hashing}.
+
+\vskip 1mm
+A {\bf collision}, is when two or more keys map to the same memory location. The main goal of using a hash function is to reduce the range of array indices that habe to be handled. Thus, instead of having $U$ values, we just need $K$ values, thereby reuding the amount of storage space required.
+
+\filbreak
+\vskip 1cm
+{\bf Hash Functions}
+
+\vskip 3mm
+A hash function is a mathematical formula which, when applied to a key, produces an integer which can be used as an index for the key in the hash table. The main goal of a hash function is that elements should be relatively, random, and uniformly distributed. It produced a unique set of integers within some suitable range in order to reduce the number of collisions. In practive, there is no has function that eliminates collisions completely. A good hash function can only minimize the number of collisions by spreading the elements uniformly throught the array.
+
+\vskip 3mm
+{\bf Properties of a Good Hash Function}
+
+\vskip 1mm
+{\bf Low cost:} The cost of executing a hash function must be small, so that using the hashing technique becomes preferable over other approaches.
+
+\vskip 3mm
+{\bf Determinism:} A hash procedure must be deterministic. This means that the same hash value must be generated for a given input value. This criteria excludes hash functions that depend on external variable parameters and on the memory address of the object being hashed.
+
+\vskip 3mm
+{\bf Uniformity:} A good hash function must map the keys as evenly as possible over its output range. This means that the probability of generating every hash value in the out range should roughly be the same. The property of uniformity also minimizes the number of collisions.
+
+\filbreak
+\vskip 1cm
+{\bf Different Hash Functions}
+
+\vskip 1mm
+{\bf Division Method}
+
+\vskip 1mm
+It is the most simple method if hashinan integer $x$. Thus divides $x$ by $M$ and then uses the remainder obtained. In this case the hash function can be given as
+
+$$h(x)=x\hbox{\tt{} mod }2^k$$
+
+then the function will simply extract the lowest $k$ bits of the binary representation of $x$.
+
+\vskip 1mm
+A potential drawback of the division method is that while using the method, consecutive keys map to consecutive hash values. This ensures that consecutive keys do not collide, but it also means that consecutive array locations will be occupied. This may lead to degradation in performance.
+
+\vskip 3mm
+{\bf Multiplication Method}
+\vskip 1mm
+The steps involved in the multiplication method are as follows:
+
+\vskip 3mm
+\qquad{\bf Step 1:} Choose a constant $A$ such that $0<A<1$.
+
+\vskip 3mm
+\qquad{\bf Step 2:} Multiply the key $k$ by $A$.
+
+\vskip 3mm
+\qquad{\bf Step 3:} Extract the fractional part of $kA$.
+
+\vskip 3mm
+\qquad{\bf Step 4:} Multiply the result of Steo 3 by the size of hash table $(m)$.
+
+\vskip 1mm
+hence, the hash function can be given as:
+
+$$h(k)-\lfloor m(kA\hbox{\tt{} mod }1)\rfloor$$
+
+where $(kA\hbox{\tt{} mod }1)$ gives the fractional part of $kA$ and $m$ is the total number of indicies in the hash table.
+
+\vskip 1mm
+The greatest advantage of this method is that it works practaclly with any value of $A$. Although the algorithm works bettwe with some values, the optimal choice depends on the characteristics of the data being hashed. Knuth has suggested that the best choice of $A$ is
+
+$${(\sqrt{5}-1)\over 2}\approx 0.6180339887$$
+
+\filbreak
+\vskip 1cm
+{\bf Mid-Square Method}
+
+\vskip 1mm
+
+The mid-square method is a good hash function which works in two steps:
+
+\vskip 3mm
+\qquad{\bf Step 1:} Square the value of the key. That is, find $k^2$.
+
+\vskip 3mm
+\qquad{\bf Step 2:} Extract the middle $r$ digits of the result obtained in Step 1.
+
+\vskip 1mm
+The algorithm works well because most or all of the key value contribute to the result. This is because all the digits in the original key value contribute to produce the middle digits of the squared value. Therefore, the result is not dominated by the distribution of th bottom digit or the top digit of the original value.
+
+\vskip 1mm
+In the mid-square method, the same $r$ digits must be chosen from all the keys. Therefore, the hash function can be given as:
+
+$$h(k)=s$$
+
+where $s$ is obtained by selecing $r$ digits from $k^2$.
+
+\filbreak
+\vskip 1cm
+{\bf Folding Method}
+
+\vskip 1mm
+The folding method works in the following two steps:
+
+\vskip 3mm
+\qquad{\bf Step 1:} Divide the key value into a number of parts. That is, divide $k$ into parts $k_1,k_2,\ldots,k_n$, where each part has the same number of digits except the last part which may have lesser digits than the other parts.
+
+\vskip 3mm
+\qquad{\bf Step 2:} Add the individual parts. That is, obtain the sum of $k_1+k_2+\cdots+k_n$. The hash value is produced by ignoring the last carry, if any.
+
+\vskip 1mm
+Note that the number of digits in each part of the key will vary depending upon the size of the hash table.
+
+\filbreak
+\vskip 1cm
+{\bf Collisions}
+
+\vskip 1mm
+Collisions occur when the hash function maps two different keys to the same location. A method used to solve the problem of collision, also called {\bf collision resolution technique}, is applied. The two most popular methods of resolving collisions are:
+
+\vskip 3mm
+\qquad 1. Open addressing
+
+\vskip 3mm
+\qquad 2. Chaining
+
+\filbreak
+\vskip 1cm
+{\bf Collision Resolution by Open Addressing}
+
+\vskip 1mm
+Once a collision takes place, open addressing or closed hashing computes new positions using a probe sequence and the next record is stored in that position. In this technique, all the values are stored in the hash table. The has table contains two types of values: {\bf sentinel values} and {\bf data values}. The presence of a sentinel value indicates that the location contains no data value at present but can be used to hold a value.
+
+\vskip 1mm
+When a key is mapped to a particular memory location, then the value it holds is checked. If it contains a sentinel value, then the location is free and the data value can be stored in it. However, if the location already has some data value stored in it, then other slots are examined systematically in the forward direction to find a free slot. If even a single free location is not found, then we have an {\tt OVERFLOW} condition.
+
+\vskip 1mm
+The process of examining memory locations in the hash table is called {\bf probing}. Open addressing technique can be implemented using linear probing, quadratic probing, double hashing, and rehashing.
+
+\filbreak
+\vskip 3mm
+{\bf Linear Probing}
+
+\vskip 1mm
+The simplest approach to resolve a collision is linear probing. In this technique, if a value is already stored at a location generated by $h(k)$, then the following function is used to resolve the collision:
+
+$$h(k,i)=[h'(k)+i]\hbox{\tt{} mod }m$$
+
+where $m$ is the size of the hash table, $h'(k)=(k\hbox{\tt{} mod }m)$ and $i$ is the probe number that varies from $0$ to $m-1$.
+
+\vskip 1mm
+Therefore, for a given key $k$, first the location generated by $[h'(k)\hbox{\tt{} mod }m]$ is probed because for the first time $i=0$. If the location is free, the value is stored in it, else the second probe generates the address of the location given by $[h'(k)+1]\hbox{\tt{} mod }m$. If the location is occupied then subsequent probes generate the address as $[h'(k)+2]\hbox{\tt{} mod } m$, $[h'(k)+3]\hbox{\tt{} mod } m$, $[h'(k)+4]\hbox{\tt{} mod } m$,$[h'(k)+5]\hbox{\tt{} mod } m$, and so on until a free location is found.
+
+\vskip 3mm
+{\bf Searching Values using Linear Probing}
+
+\vskip 1mm
+The procedure for searching a value in a hash table is the same as for storing a value in a hash table. While searching for a value in a hash table, the array index is re-computed and the key of the element stored at that location is compared with the value that has to be searched. If a match is found, then the search operation is successful. The search time in this case is given as $O(1)$. If the key does not match, then the search function begins a sequential search of the array that continues until:
+
+\vskip 3mm
+\qquad$\bullet$ the value is found, or
+
+\vskip 3mm
+\qquad$\bullet$ the search function encounters a vacant location in the array, indicating that the value is not present, or
+
+\vskip 3mm
+\qquad$\bullet$ the search function terminates because it reaches the end of the table and the value is not present.
+
+\vskip 1mm
+In the worst case, the search operation may have to make $n-1$ comparisons, and the running time of the search algorithm take $O(n)$ time. The worst case will be encountered when after scanning all the $n-1$ elements, the value is either present at the last location or not present in the table.
+
+\vskip 1mm
+Thus, we see that with the increase in the number of collisions, the distance between the array index computed by the hash function and the actual location of the element increases, thereby increasing the search time.
+
+\filbreak
+\vskip 3mm
+{\bf Pros and Cons}
+
+\vskip 1mm
+Linear probing finds an empty location by doing a linear search in the array beginning from poisition $h(k)$. Although the algorithm provides good memory caching through locality of reference, the drawback of this algorithm is that it results in clustering, and thus there is a higher risk of more collisions where one collision has already taken place. aThe performance of linear probing is sensitive to the distribution of input values.
+
+\vskip 1mm
+As the hash table fills, cluster of consecutive cells are formed and the time required for a search increases with the size of the cluster. In addition to this, when a new value has to be inserted into the table at a position which is already occupied, that value is inserted at the end of the cluster, which again increases the length of the cluster. Generally, an insertion is made between two clusters that are separated by one vacant space. With linear probing, there are more chances that subsequent insertions will also end up in one of the clusters, thereby potentially increasing the cluster length by an amount much greater than one. The more number of collisions, higher ther probes that are required to find a free location and the performance is degraded. This is called {\bf primary clustering}. To aviod primary clustering, other techniques such as quadratic probing and double hashing are used.
+
+\filbreak
+\vskip 3mm
+{\bf Quadratic Probing}
+
+\vskip 1mm
+In this technique, if a value is already stored at a location generated by $h(k)$, then the following hash function is used to resolve the collision:
+
+$$h(k,i)=[h'(k)+c_1i+c_2i^2]\hbox{\tt{} mod }m$$
+
+where $m$ is the size of the hash table, $h'(k)=(k\hbox{\tt{} mod } m)$, $i$ is the probe number that varies from $0$ to $m-1$, and $c_1$ and $c_2$ are constants such that $c_1$ and $c_2\neq 0$.
+
+\vskip 1mm
+Quadratic probing eliminates the primary clustering phenomenon of linear probing because instead of doing a linear search, it does a quadratic search. For a given key $k$, first the location generated by $h'(k)\hbox{\tt{} mod }m$ is probed. If the location is free, the value is stored in it, else subsequent locations probed are offset by factors that depend in a quadratic manner on the probe number $i$. Although quadratic probing performs better than linear probing, in order to maximize the utilization of the hash table, the values of $c_1,c_2$ and $m$ need  to be constrained.
+
+\vskip 3mm
+{\bf Searching a Value using Quadratic Probing}
+
+\vskip 1mm
+While searching a value using the quadratic probing technique, the array index is re-computed and the key of the element stored at that location is compared with the value that has to be searched. If the desired key value matches with the key value at that location, then the element is present in the hash table and the search is said to be successful. In this case, the search time is given as $O(1)$. However, if the value does not match, then the search function begins a sequential search of the array that continues until:
+
+\vskip 3mm
+\qquad$\bullet$ the value is found, or
+
+\vskip 3mm
+\qquad$\bullet$ the search function encounters a vacant location in the array, indicating that the value is not present, or
+
+\vskip 3mm
+\qquad$\bullet$ the search function terminates because it reaches the end of the table and the value is not present.
+
+\vskip 1mm
+In the worst case, the search operation may take $n-1$ comparisons, and  the running time of the search algorithm $O(n)$. The worst case will be encountered when after scanning all the $n-1$ elements, the value is either present at the last location or not present in the table.
+
+\vskip 3mm
+{\bf Pros and Cons}
+
+\vskip 1mm
+Quadratic probing resolves the primary clustering problem that exists in the linear probing technique. Quadratic probing good memory caching because it preserves locality of reference. But linear probing does this task better and gives a better cache performance.
+
+\vskip 1mm
+One of the major drawbacks probing is that that a sequence of successive probes may only explore a fracion of the table, and this fraction may be quite small. If this happens, then we will not be able to find an empty location in the table despite the fact that the table is by no means full.
+
+\vskip 1mm
+Although quadratic probing is free from primary clustering, it is still liable to what is known as {\bf secondary clustering}. It means that if there is a collision between two keys, then the same probe sequence will be followed for both. With quadratic probing, the probability for multiple collisions increases as the table becomes full. This situation is usually encountered when the hash table is more than full.
+
+\vskip 1mm
+Quadratic probing is widely applied in the Berkeley Fast File System to allocate free blocks.
+
+\vskip 3mm
+{\bf Double Hashing}
+\vskip 1mm
+To start with, double hashing uses one hash value and then repeatedly steps forward an interval until an empty location is reached. The interval is decided using a second, independent hash function. In double hashing, we use two hash functions rather than single function. The hash function in the case of double hashing can be given as:
+
+$$h(k,i)=[h_1(k)+ih_2(k)]\hbox{\tt{} mod } m$$
+
+where $m$ is the size of the hash table, $h_1(k)$ and $h_2(k)$ are two hash functions given as $h_1(k)=k\hbox{\tt{} mod }$, $h_2(k)=k\hbox{\tt{} mod } m'$, $i$ is the probe number that varies from $0$ to $m-1$, and $m'$ is chosen to be less than $m$. We can choose $m'-m-1$ or $m-2$.
+
+\vskip 1mm
+When we have to insert a key $k$ in the hash table, we first probe the location given by applyinh $[h_1(k)\hbox{\tt{} mod} m]$ because during the first probe, $i=0$. If the location is vacant, the key is inserted into it, else subsequent probes generate locations that are at an offset of $[h_2(k)\hbox{\tt{} mod } m]$ from the previous location. Since the offset may vary with every probe depending on the value generated by the second hash function, the performance of double hashing is very close to the performance of the ideal scheme of uniform hashing.
+
+\vskip 3mm
+{\bf Pros and Cons}
+
+\vskip 1mm
+Double hashing minimizes repeated collisions and the effects of clustering. That is, double hashing is free from problems associated with primary clustering as well as secondary clustering.
+
+\vskip 3mm
+{\bf Rehashing}
+
+\vskip 1mm
+When the hash table becomes nearly full, the number of collisions increases, thereby degrading the performance of insertion and search operations. In such cases, a better option is to create a new hash table with size double of the original hash table.
+
+\vskip 1mm
+All the entries in the original hash table will then have to be moved to the new hash table. This is done by taking each entry, computing its new hash value, and then inserting it in the new hash table.
+
+\vskip 1mm
+Though rehashing seems to be simple process, it is quite expensive and must therefore not be done frequently.
+
+\filbreak
+\vskip 1cm
+{\bf Collision Resolution by Chaining}
+
+\vskip 1mm
+In chaining, each location in a hash table stores a pointer to a linked list that contains all the key values that were hashed to that location. That is, location 1 in the hash table points to the head of the linked list of all the key values that hashed to 1. However, if no key value hashes to 1, then location 1 in the hash table contains {\tt NULL}.
+
+\vskip 3mm
+{\bf Operations on a Chained Hash Table}
+
+\vskip 1mm
+Searching for a value in a chained hash table is as simple as scanning a linked list for an entry  with the given key. Insertion operation appends the key to the end of the linked list pointed by the hashed location. Deleting a key requires searching the list and removing the element.
+
+\vskip 1mm
+Chained hash tables with linked lists are widely used to the simplicity of the algorithms to insert, delete, and search a key. The code for these algorithms is exactlythe same as that for inserting, deleting and searching a value in a single linked list.
+
+\vskip 1mm
+While the cost of inserting a key in a chained hash table is $O(1)$, the cost of deleting and searching a value is given as $O(m)$ where $m$ is the number of elements in the list of that location. Searching and deleting takes more time because these operations scan the entries of the selected location for the desired key.
+
+\vskip 1mm
+In the worst case, searching a value may take a running time of $O(n)$, where $n$ is the number of key values stored in the chained hash table. This case arises when all the key values are inserted into the linked list of the same location (of the hash table). In this case, the hash table is ineffective.
+
+\vskip 2mm
+Codes to initialize, insert, delete, and search a value in a chained hash table
+
+\filbreak
+\vskip 1cm
+{\bf Strucutre of the node}
+$$\vbox{\+\tt typedef\cleartabs&\tt{} struct node$\_HT$ $\{$ \cr
+	\+&\tt int value;\cr
+	\+&\tt struct node *next;\cr
+	\+\tt$\}$ node;\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Code to initialize a chained hash table}
+$$\hbox{\bf // Initializes $m$ location in the chained hash table.}$$
+$$\hbox{\bf // The operation takes a running time of $O(m)$ */}$$
+$$\vbox{\+\tt void \cleartabs&\tt{} initializeHashTable(node *hash$\_$table[], int m) $\{$\cr
+	\+&\tt int i;\cr
+	\+&\tt for\cleartabs&\tt{}(i = 0; i $\leq$ m; i++)\cr
+	\+&&\tt hash$\_$table[i] = NULL;\cr
+	\+$\}$\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Code to insert a value}
+$$\hbox{\bf //  The element is inserted at the beginning of the linked list whose pointer to its head is}$$
+$$\hbox{\bf // stored in the location given by $h(k)$. The running time of the insertion operation is $O(1),$}$$
+$$\hbox{\bf // as the new key is alwaysadded as the first element of the list irrespective of the }$$
+$$\hbox{\bf // size of the linked list as well as that of the chained hash table. *}$$
+$$\vbox{\+\tt node \cleartabs&\tt{} *insert$\_$value(node *hash$\_$table[], int val) $\{$ \cr
+	\+&\tt node *new$\_$node;\cr
+	\+&\tt new$\_$node = (node *)malloc(sizeof(node));\cr
+	\+&\tt new$\_$node value = val;\cr
+	\+\tt new$\_$node next = hash$\_$table[h(x)];\cr
+	\+\tt hash$\_$table[h(x)] = new$\_$node;\cr
+	\+\tt $\}$\cr}$$
+\filbreak
+\vskip 1cm
+{\bf Code to search a value}
+$$\hbox{\bf //  The element is searched in the linked list whose pointer to its head is stored in the}$$
+$$\hbox{\bf // location given by $h(k)$. If search is successful, the function returns a pointer to the node}$$
+$$\hbox{\bf // in the linked list; otherwise it returns {\tt NULL}. The wost case running time of the}$$
+$$\hbox{\bf // search operation is given as order of size of the linked list. */}$$
+$$\vbox{\+\tt node\cleartabs&\tt{} *search$\_$value(node *hash$\_$table[], int val) $\{$ \cr
+	\+&\tt node *ptr;\cr
+	\+&\tt ptr = hash$\_$table[h(x)];\cr
+	\+&\tt while\cleartabs&\tt{}((ptr $\neq$ NULL) $\&\&$ (ptr -> value $\neq$ val))\cr
+	\+&&\tt ptr = ptr -> next;\cr
+	\+&\tt if(ptr -> value == val)\cr
+	\+&&\tt return ptr;\cr
+	\+&\tt else\cr
+	\+&&\tt return NULL\cr
+	\+\tt $\}$\cr}$$
+
+\filbreak
+\vskip 1cm
+{\bf Code to delete a value}
+$$\hbox{\bf //  To delete a node from the linked list whose head is stored at the location given by $h(k)$}$$
+$$\hbox{\bf // in the hash table, we need to know the address of the node's predecessor. We do this }$$
+$$\hbox{\bf // using a pointer save. The running time complexity of the delete operation is same as that}$$
+$$\hbox{\bf // of the search operation because we need to search the predecessor of the node so that the}$$
+$$\hbox{\bf // node can be removed without affecting other nodes in the list. */}$$
+$$\vbox{\+\tt void \cleartabs&\tt{} delete$\_$value(node *hash$\_$table[], int val) $\{$ \cr
+	\+&\tt node *save, *ptr;\cr
+	\+&\tt save = NULL;\cr
+	\+&\tt ptr = hash$\_$table[h(x)];\cr
+	\+&\tt while\cleartabs&\tt{}((ptr $\neq$ NULL) $\&\&$ (ptr value $\neq$ val)) $\{$\cr
+	\+&&\tt save = ptr;\cr
+	\+&&\tt ptr = ptr next;\cr
+	\+&\tt$\}$\cr
+	\+&\tt if(ptr $\neq$ NULL) $\{$\cr
+	\+&&\tt save next = ptr next;\cr
+	\+&&\tt free(ptr);\cr
+	\+&\tt$\}$\cr
+	\+&\tt else\cr
+	\+&&\tt printf("$\backslash$n VALUE NOT FOUND"):\cr
+	\+\tt$\}$\cr}$$
+
+\vskip 3mm
+{\bf Pros and Cons}
+
+\vskip 1mm
+The main advantage of using a chained hash table is that is remains effective even when the number of key values to be stored is much higher than the number of locations in the hash table. However, with the increase in the number of keys to be stored, the performance of a chained hash table does degrade gradually (linearly).
+
+\vskip 1mm
+The other advantage of using chaining for collision resolution is that its preformance, unlike quadratic probing, does not degrade when the table is more than half full. This technique is absolutely free from clustering problems and thus provides an efficient mechanism to handle collisions.
+
+\vskip 1mm
+Chained hash tables inherit the disadvantages of linked list. First, to store a key value, the space overhead of the next pointer in each entry can be signigicant. Second, traversing a linked list has poor cache performance, making the processor cache ineffective.
+
+\vskip 3mm
+{\bf Bucket Hashing}
+
+\vskip 1mm
+In closed hashing, all the records are directly stored in the hash table. Each record with a key value $k$ is stored in a location called its home position. The home position is calculated by applying some hash functions.
+
+\vskip 1mm
+In case the home position of the record with key $k$ is already occupied by another record then the record will be stored in some other location in the hash table. This location will be determined by technique that is used for resolving collisions. Once the records are inserted, the same algorithm is again applied to search for a specified record.
+
+\vskip 1mm
+One implementation of closed hashing groups the hash table into buckets where $M$ slots of the hash table are divided into $B$ buckets. Therefore, each bucket contains $M/B$. Now when a new record has to be inserted, the hash function computes the home position. If the slot is fre, the record is inserted. Otherwise, the bucket's slots are sequentially searched until an open slot is found. In case, the entire bucket is full, the record is inserted into an overflow bucket. The overflow bucket has infinite capacity at the end of the table and is shared by all the buckets.
+
+\vskip 1mm
+An efficient implementation of bucket hashing will be to use a hash function that evenly distributes the records amongst the buckets so that very few records have to be inserted in the overflow bucket.
+
+\vskip 1mm
+When searching a record, first the hash function is used to determine the bucket in which the record can be present. Then the bucket is sequentially searched to find the desired record. If the record is not found and the bucket still has some empty slots, then it means that the search is complete and the desired record is not present in the hash table.
+
+\vskip 1mm
+If the bucket is full and the record has not been found, then the overflow bucket is searched until the record is found or all the records in the overflow bucket have been checked. Searching the overflow bucket can be expensive if it has too many records.
+
+\filbreak
+\vskip 1cm
+{\bf Pros and Cons of Hashing}
+
+\vskip 1mm
+One advantage of hashing is that no extra space is required to store the index as in the case of other data structures. In addition, a hash table provides fast data access and an added advantage of rapid updates.
+
+\vskip 1mm
+The primary drawback of using the hashing technique for inserting and retrieving data values is that is usually lacks locality and sequntial retrieval by key. This makes insertion and retrivel of data values even more random.
+
+\filbreak
+\vskip 1cm
+{\bf Applications of Hashing}
+
+\vskip 1mm
+Hash tables are widey used in situations where enormous amounts of data have to be accessed to quickly search and retrieve information.
+
+\vskip 1mm
+Hashing is used for database indexing. 
+
+\vskip 3mm
+\qquad$\bullet$ Hash table is a data structure in which keys are mapped to array positions by a hash function. A value stored in a hash table can be searched in $O(1)$ time using a hash function which generates an address from the key.
+
+\vskip 3mm
+\qquad$\bullet$ The storage requirement for a hash table is $O(k)$, where $k$ is the number of keys actually used. In a hash table, an element with key $k$ is stored at index $h(k)$, not $k$. This means that a hash function $h$ is used to calculate the index at which the element with key $k$ will be stored. Thus, the process of mapping keys to appropriate locations (or indices) in a hash table is called hashing.
+
+\vskip 3mm
+\qquad$\bullet$ Popular hash functions which use numeric keys are division method, multiplication method, mid square method, and folding method.
+
+\vskip 3mm
+\qquad$\bullet$ Division method divides $x$ by $M$ and then uses the remainder obtained. A potential drawback of this method is that consecutive keys map to consecutive hash values.
+
+\vskip 3mm
+\qquad$\bullet$ Multiplication method applies the hash function given as $h(x)=\lfloor m(kA\hbox{\tt mod } 1)\rfloor$
+
+\vskip 3mm
+\qquad$\bullet$ Mid square method works in two steps. First, it find $k^2$ and then extracts the middle $r$ digits of the result.
+
+\vskip 3mm
+\qquad$\bullet$ Folding method works by first dividing the key value $k$ into parts $k_1, k_2, \ldots, k_n$, where each part has the same number of digits except the last part which may have lesser digits except the other parts, then obtaining the sum of $k_1+k_2+\ldots+k_n$. The hash value is produced by ignoring the last carry, if any.
+
+\vskip 3mm
+\qquad$\bullet$ Collisions occur when a hash function maps two different keys to the same location. Therefore, a method used to solve the problem of collisions, also called collision resolution technique, is applied.The two most popular methods of resolving collisions are: (a) open addressing and (b) chaining.
+
+\vskip 3mm
+\qquad$\bullet$ Once a collision takes place, open addressing computes new positions using a probe sequence anf the next record is stored in that position. In this technique of collision resolution, all the values are stored in the hash table. The hash table will contain two types of values---either sentinel value or a data value.
+
+\vskip 3mm
+\qquad$\bullet$ Open addressing technique can be implemented using linear probing, quadratic probing, double hashing, and rehashing.
+
+\vskip 3mm
+\qquad$\bullet$ In linear probing if a value is already stored at a location generated by $h(k)$, then the following hash function is used to resolve the collision:
+
+$$h(k,i)=[h'(k)+i]\hbox{\tt{} mod }m$$
+
+Though linear probing enables good memory caching, the drawback of this algorithm is that it results in primary clustering.
+
+\vskip 3mm
+\qquad$\bullet$ In quadratic probing, if a value is already stored at a location generated by $h(k)$, if a value is already stored at a location generated by $h(k)$, then the following hash function is used to resolve the collision:
+
+$$h(k,i)=[h'(k)+c_1i+c_2i^2]\hbox{\tt{} mod} m$$
+
+Quadratic probing eliminates primary and provides good memory caching. But it is still liable to secondary clustering.
+
+\vskip 3mm
+\qquad$\bullet$ In double hashing, we use two hash functions rather than a single function. The hash function rather than a single function. The hash function in the case of double hashing can be given as
+
+$$h(k,i)=[h_1(j)+ih_2(k)]\hbox{ mod }m$$
+
+The performance of double hashing is very close to the performance of the ideal scheme of uniform hashing. It minimizes repeated collisions and the effects of clustering.
+
+\vskip 3mm
+\qquad$\bullet$ When the hash table becomes nearly full, the number of collisions increases, thereby degrading the performance of insertion and search operations. So in rehashing, all the entries in the original hash table are moved to the new hash table which is double the size of the original hash table.
+
+\vskip 3mm
+\qquad$\bullet$ In chaining, each location in a hash table stores a pointer to a linked list that contains all the key values that were hashed to that location. While the cost of inserting a key in a chained hash table is $O(1)$, the cost for deleting and searching a value is given as $O(m)$, where $m$ is the number of elements in the list of that location. However, in the worst case, searching for a value may take a running time of $O(n)$.
+
+%$$\vbox{\+\tt \cleartabs& \cr
+%	\+\cr
+%	\+\cr
+%	\+\cr}$$
+
+\vfill\eject
+\bye

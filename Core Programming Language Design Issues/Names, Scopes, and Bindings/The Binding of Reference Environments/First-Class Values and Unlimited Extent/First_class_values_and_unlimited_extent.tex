@@ -1,0 +1,25 @@
+\nopagenumbers
+{\bf First-Class Values and Umlimited Extent}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+{\bf First-class}: A value that can be passed as a parameter, returned from a subroutine, or assigned into a variable.
+
+\vskip 6pt
+{\bf Second-class}: A value that can be passed as a parameter, but not returned from a subroutine or assigned into a variable.
+
+\vskip 6pt
+{\bf Third-class}: A value that cannot be passed as a parameter.
+
+\vskip 6pt
+{\bf Unlimited extent}: Objects lifetimes continues indefinitely.
+
+\vskip 6pt
+{\bf Limited extent}: Objects are destroyed at the end of their scope's execution.
+
+\vskip 6pt
+Simple types such as integers and characters are first-class values in most programming languages. If local objects were destroyed at the end of each scope's execution, then the referencing environment captured in a long-lived closure might become full of dangling references. To avoid this problem, most functional languages specify that local objects have {\it unlimited extent}. Their space can only be reclaimed when the garbage collection system is able to prove that they will never be used again. Local objects in most imperative languages have {\it limited extent}. Space for local objects with limited extent must generally be allocated on the stack. Space for local objects with unlimited extent must generally be allocated on a heap.
+
+\vfill\eject
+\bye

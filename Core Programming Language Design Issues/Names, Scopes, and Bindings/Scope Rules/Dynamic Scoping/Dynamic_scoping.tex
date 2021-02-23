@@ -1,0 +1,13 @@
+\nopagenumbers
+{\bf Dynamic Scoping}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+In a language with dynamic scoping, the bindings between names and objects depend on the flow of control at run time, and in particular on the order in which subroutines are called. Dynamic scope rules are generally simple: the "current" binding for a given name is the one encountered most recently {\bf during execution}, and not yet destroyed by returning from its scope. Because the flow of control cannot in general be predicted in advanced, the bindings between names and objects in a language with dynamic scoping cannot in general be determined by a compiler. Type checking in expressions and argument checking in subroutine calls, for example, must in general be deferred until run time. To accommodate all these checks, languages with dynamic scoping tend to be {\bf interpreted}, rather than compiled.
+
+\vskip 6pt
+With dynamic scoping, errors associated with the referencing environment may not be detected until run time.
+
+\vfill\eject
+\bye

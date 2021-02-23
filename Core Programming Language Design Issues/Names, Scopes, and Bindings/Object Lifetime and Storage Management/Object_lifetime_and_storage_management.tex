@@ -1,0 +1,53 @@
+\nopagenumbers
+{\bf Object Lifetime and Storage Management}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+{\bf Key events between $\underline{\hbox{names}}$ and the objects they refer to}:
+
+\vskip 6pt
+$\bullet$ Creation and destruction of objects
+
+\vskip 6pt
+$\bullet$ Creation and destruction of bindings
+
+\vskip 6pt
+$\bullet$ Deactivation and reactivation of bindings that may be temporarily unusable
+
+\vskip 6pt
+$\bullet$ References to variables, subroutines, types, and so on all of which use bindings
+
+\vskip 12pt
+{\bf Binding lifetime}: The period of time between the creation and the destruction of a $\underline{\hbox{name-to-object}}$ binding.
+
+\vskip 6pt
+{\bf Obect lifetime}: The period of time between the creation and destruction of an $\underline{\hbox{object}}$. An {\it object} may retain its $\underline{\hbox{value}}$ and the potential to be accessed even when a given {\it name} can no longer be used to access it.
+
+\vskip 1mm
+When a {\it variable} is passed to a subroutine by $\underline{\hbox{reference}}$, the {\it binding} between the $\underline{\hbox{parameter name}}$ and the {\it variable} that was passed has a {\it lifetime} shorter than that of the variable itself.
+
+\vskip 6pt
+A $\underline{\hbox{binding}}$ to an object that is no longer live is called a $\underline{\hbox{dangling reference}}$.
+
+\vskip 6pt
+{\bf Object lifetimes} generally correspond to one of the three $\underline{\hbox{storage allocation}}$ mechanisms, used to manage the object's space.
+
+\vskip 6pt
+$\underline{\hbox{{\bf Storage allocation mechanisms}:}}$
+
+\vskip 6pt
+{\bf Static}: Static objects are given an $\underline{\hbox{absolute address}}$ that is retained throughout the $\underline{\hbox{program's execution}}$.
+
+\vskip 6pt
+{\bf Stack}: Stack objects are $\underline{\hbox{allocated}}$ and $\underline{\hbox{deallocated}}$ in last-in, first-out (LIFO) order, usually in conjunction with {\it subroutines} and {\it returns}.
+
+\vskip 6pt
+{\bf Heap}: Heap objects may be {\it allocated} and {\it deallocated} at arbitrary times. They require a more general (expensive) $\underline{\hbox{storage management}}$ algorithm.
+
+\vskip 6pt
+When a variable is passed to a subroutine by {\bf reference}, the binding between the parameter name and the variable that was passed has a lifetime shorter than that of the variable itself.
+
+
+\vfill\eject
+\bye

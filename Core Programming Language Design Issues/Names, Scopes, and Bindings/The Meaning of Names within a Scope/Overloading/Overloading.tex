@@ -1,0 +1,35 @@
+\nopagenumbers
+{\bf Overloading}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+In C the plus sign (+) is used to name several different functions, including signed and unsigned integer and floating-point addition.
+
+\vskip 6pt
+Within the symbol table of a compiler, overloading must be handled ({\it resolved}) by arranging for the {\tt lookup} routine to return a {\it list} of possible meanings for the requested name. The semantic analyzer must then choose from among the elements of the list based on context. When the context is not sufficient to decided, then the semantic analyzer must announce an error.
+
+\vskip 6pt
+In C, one cannot overload enumeration constants at all; every constant visible in a given scope must be distinct. In C++, Java and C$\#$ A given name may refer to an arbitrary number of subroutines in the same scope, so long as the subroutines differ in the number or types of their arguments.
+
+\vskip 12pt
+{\bf Redefining Built-in Operators}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+Many languages also allow the built-in operators $(+,-,*,\hbox{ etc.})$ to be overloaded with user-defined fuctions. Ada, C+, and C$\#$ do this by defining alternatice {\it prefix} forms of each operator, and defining the usual {\it infix} forms to be abbreviations for the prfix forms.
+
+\vskip 12pt
+{\bf Related Concepts}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+When considering function and subroutine calls, it is important to distinguish overloading from the related concepts of {\it coercion} and {\it polymorphism}. All three can be used, in certain circumstances, to pass arguments of multiple types to (or return values of multiple types from) what appears to be a single named routine. The syntactic similarity, hides significant differences in semantic and pragmatics.
+
+\vskip 6pt
+Corcion, is the process by which a compiler automatically converts a value of one type into a value of another type when that second type is required by the surrounding context. Polymorphism, allows a single subroutine to accept arguments of multiple types.
+
+\vfill\eject
+\bye

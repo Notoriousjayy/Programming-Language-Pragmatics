@@ -1,0 +1,126 @@
+{\bf {\tt If-Then} Statements in Bash}
+\vskip 1mm
+The bash shell {\tt if} statement runs the command defined on the {\tt if} line. If the exit status of the command is zero, the commands listed under the {\tt then} section are executed. If the exit status of the command is anything else, the {\tt then} commands aren't executed.
+
+\vskip 2mm
+$$\vbox{\+\bf\bf if \cleartabs&\tt{} command \cr
+	\+\bf then\cr
+	\+&\bf{\tt commands} \cr
+	\+\bf fi\cr}$$
+
+\vskip 3mm
+\filbreak
+
+{\bf Alternative to {\tt if-then} statement}
+\vskip 1mm
+$$\vbox{\+\bf if \cleartabs&{} {\tt command}; then\cr
+	\+&{\tt commands}\cr
+	\+{\bf fi}\cr}$$
+
+\vskip 1in
+\filbreak
+{\bf {\tt If-then-else} statement}
+\vskip 1mm
+When the command in the {\tt if} statement line returns with a zero exit status code, the commands listed in the {\tt then} section are executed, just as in a normal {\tt if-then} statement. When the commands listed in the {\tt if} statement line returns a non-zero exit status code, the bash shell executes the commands in the {\tt else} section.
+
+\vskip 1mm
+$$\vbox{\+\bf if \cleartabs& \tt command \cr
+	\+\bf then \cr
+	\+&\tt commands \cr
+	\+\bf else \cr
+	\+&\tt commands \cr
+	\+\bf fi \cr}$$
+
+
+\vskip 1in
+\filbreak
+{\bf {\tt elif} statement}
+\vskip 1mm
+If the exit status code from the {\tt elif} command is zero, bash executes the commands in the second {\tt then} statement section.
+\vskip 1mm
+$$\vbox{\+\bf if \cleartabs& \tt command1\cr
+	\+\bf then \cr
+	\+& commands \cr
+	\+\bf elif {\tt commands} \cr
+	\+\bf then \cr
+	\+&\tt more commands \cr
+	\+\bf fi \cr}$$
+
+\vskip 1mm
+You can string {\tt elif} statements together, creating one huge {\tt if-then-elif} statement.
+\vskip 3mm
+$$\vbox{\+\bf if \cleartabs& \tt command1 \cr
+	\+\bf then \cr
+	\+&\tt command set 1 \cr
+	\+\bf elif command3 \cr
+	\+&\tt command set 2 \cr
+	\+\bf then \cr
+	\+&\tt command set 3 \cr
+	\+\bf elif command4 \cr
+	\+\bf then \cr
+	\+&\tt command set 4 \cr
+	\+\bf fi \cr}$$
+
+\vskip 1in
+\filbreak
+{\bf {\tt test} command }
+\vskip 1mm
+Bash's {\tt if-then} statements only has the ability to test only a command's exit status. The {\tt test} command provides a way to test different conditions in an {\tt if-then} statement. If the condition listed in the {\tt test} command evaluates to {\tt TRUE}, the {\tt test} command exits with a zero exit status code. This makes the {\tt if-then} statement behave the same way {\tt if-then} statements work in other languages.
+
+\vskip 1mm
+The {\it condition} is a series of parameters and values that the {\tt test} command evaluates. If you leave out the {\it condition} portion of the {\tt test} command statement, it exits with a non-zero exit status code and triggers any {\tt else} block statements. When you add in a condition, it is tested by the {\tt test} command.
+\vskip 1mm
+
+$$\vbox{\+\bf if test \cleartabs& \tt condition \cr
+	\+\bf then \cr
+	\+&\tt commands \cr
+	\+\bf fi \cr}$$
+
+
+\vskip 3mm
+\filbreak
+{\bf Alternative of testing a condition without declaring the {\tt test} command}
+\vskip 1mm
+$$\vbox{\+\bf if \cleartabs& [ {\tt condition} ]\cr
+	\+\bf test \cr
+	\+&\tt commands \cr
+	\+\bf fi \cr}$$
+
+\vskip 1mm
+The square brackets define the test condition. You {\bf must} have a space after the first bracket and a space before the last bracket, or you'll get an error message.
+
+\vskip 1mm
+The {\tt test} command and test conditions can evaluate three classes of conditions
+
+\vskip 1mm
+\qquad$\bullet$ Numeric comparisons
+\vskip 1mm
+\qquad$\bullet$ String comparisons
+\vskip 1mm
+\qquad$\bullet$ File comparisons
+
+\vskip 1in
+\filbreak
+{\bf double parentheses command}
+\vskip 1mm
+The {\it double parentheses} command allows you to incorporate advanced mathematical formulas in your comparisons.
+
+$$\hbox{(({\tt expression}))}$$
+
+The term {\it expression} can be any mathematical assignment or comparison expression.
+
+\vskip 1in
+\filbreak
+{\bf {\tt case} Command}
+\vskip 1mm
+The {\tt case} command test checks multiple values of a single variable in a list-oriented format.
+
+$$\vbox{\+\tt case variable in \cr
+	\+\tt pattern1 $|$ pattern2) {\bf commands1};; \cr
+	\+\tt pattern3) {\bf commands2};; \cr
+	\+\tt *) {\bf default commands};; \cr
+	\+\tt esac \cr}$$
+
+\filbreak
+\vfill\eject
+\bye

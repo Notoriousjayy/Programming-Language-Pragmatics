@@ -1,0 +1,13 @@
+\nopagenumbers
+{\bf Module Hierarchies}
+\vskip 1mm
+\hrule
+
+\vskip 6pt
+In Modula and Ada, the programmer can create a hierarchy of modules within a single compilation unit by means of lexical nesting. In a similar vein, the Ada 95, Java, or C$\#$ programmer can create a hierarchy of separetly compiled modules by means of {\bf mutlipart names}:
+
+$$\hbox{{\tt package A.B;} \quad\quad\quad //Java}$$
+
+In this package {\tt A.B} is said to be a {\bf child} of package {\tt A}. In Java, multipart names work by convention only. If {\tt A.B} needs to refer to names in {\tt A}, then {\tt A} must make them public, and {\tt A.B} must import them.
+\vfill\eject
+\bye
