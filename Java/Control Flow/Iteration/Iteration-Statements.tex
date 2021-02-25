@@ -1,0 +1,74 @@
+{\bf Iteration Statements}
+
+\vskip 1cm
+{\bf while}
+\vskip 3mm
+The {\bf while} loop repeats a statement or block while its controlling expression is true. Here is the general form:
+
+$$\vbox{\+\tt while\cleartabs&{\it (condition)}\tt$\,$ $\{$\cr
+	\+&{\bf // body of loop}\cr
+	\+$\}$\cr}$$
+\vskip 3mm
+The {\it condition} can be any Boolean expression. The body of the loop will be executed as long as the conditional expression is true. When{\it condition} becomes false, control passes to the next line of code immediately following the loop.
+
+\vskip 3mm
+Since the {\bf while} loop evaluates its conditional expression at the top of the loop, the body of the loop will not execute even once if the condition is false to begin with.
+
+\vskip 1in
+\filbreak
+{\bf do-while}
+\vskip 3mm
+The {\bf do-while} loop always executes its body at least once, because its conditional expression is at the bottom of the loop. Here is the general form:
+
+$$\vbox{\+\tt do \cleartabs&$\,\{$\cr
+	\+&{\bf // body of loop}\cr
+	\+\tt$\}$ while\cr}$$
+
+\vskip 3mm
+Each iteration of the {\bf do-while} loop executes the body of the loop and then evaluates the conditional expression. If this expression is true, the loop will repeat. Otherwise, the loop terminates. The {\it condition} must a Boolean expression.
+
+\vskip 1in
+\filbreak
+{\bf for}
+
+\vskip 3mm
+There are two forms of the {\bf for} loop. The traditional form and the {\bf for-each} form. Here is the general form of the traditional {\bf for} statement:
+
+$$\vbox{\+\tt for \cleartabs& {\it (initialization; condition; iteration)} $\,\{$\cr
+	\+&{\bf //body of loop}\cr
+	\+$\}$\cr}$$
+
+\vskip 3mm
+When the loop first starts, the {\it initialization} portion of the loop is executed. Generally this is an expression that sets the value of the {\it loop control variable}, which acts as a counter that controls the loop.
+\vskip 1mm
+Next, {\it condition} is evaluated . This must be a Boolean expression. It usually test the loop control variable against a target value. If this expression is true, then the body of the loop is executed. If it is false, the loop terminates.
+
+\vskip 1mm
+Next, the {\it iteration} portion of the loop is executed. This is usually an expression that increments or decrements the loop control variable. The loop iterates, first evaluating the conditional expression, then executing the body of the loop, and then executing the iteration expression each pass. This process repeates until the controlling expression is false.
+
+\vskip 1mm
+You can declare a variable inside a {\bf for} loop, there is one important thing to remember: the scope of that variable ends when the {\bf for} statement does.
+
+\vskip 1mm
+Java allows you to include multiple statements in both the initialization and iteration portions of the {\bf for}. Each statement is separated from the next by a comma.
+
+$$\hbox{\tt for(int a = 1, int b = 4; a < b; a++,b--)}$$
+
+\vskip 1cm
+\filbreak
+{\bf for-each}
+\vskip 3mm
+A {\bf for-each} style loop is designed to cycle through a collection of objects, such as an array, in strictly sequential way, from start to finish. The general form of the {\bf for-each} version of the {\bf for}
+
+$$\hbox{\tt for (type iterator-variable : collection) statement-block}$$
+
+Here, {\it type} specifies the type and {\it iterator-variable} specifies the name of an {\it iteration variable} that will receive the elements from a collection, one at a time, from beginning to end. The collection being cycled through is specified by {\it collection}. With each iteration of the loop, the next element in the collection have been obtained.
+
+\vskip 1mm
+Because the iteration variable receives values from the collection, {\it type} must be the same (or compatible with) the elements stored in the collection. Thus, when iterating over arrays, {\it type} must be compatible with the elementtype of the array.
+
+\vskip 1mm
+There is one important point to understand about the {\bf for-each} style loop. Its iteration variable is "read-only" as it relates to the underlying array. An assignment to the iteration variable has no eefect on the underlying array. In other words, you can't change the contents of the array by assigning the iteration variable a new value.
+\filbreak
+\vfill\eject
+\bye
