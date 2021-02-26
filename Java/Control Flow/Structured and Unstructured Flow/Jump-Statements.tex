@@ -29,6 +29,34 @@ Most often, {\it label} is the name of a label that identifies a block of code. 
 \vskip 1mm
 To name a block, put a label at the start of it. A {\it label} is any valid Java identifier followed by a colon. Once you have labeled a block, you can then use this label as the target of a {\bf break} statement. Doing so causes execution to resume at the {\it end} of the labeled block.
 
+\vskip 1mm
+One of the most common use for a labeled break statement is to exit from nested loop. When the inner loop breaks to the outer loop, both loops have been terminated. Keep in mind that you cannot break to any label which is not defined for an enclosing block.
+
+\vskip 1in
+\filbreak
+{\bf Using Continue}
+\vskip 3mm
+You might want to continue running the loop but stop processing the remainder of the code in its body for this particular iteration. The {\bf continue} statement performs such an action. In {\bf while} and {\bf do-while} loops, a {\bf continue} statement causes control to be transferred directly to the conditional expression that controls the loop. In a {\bf for} loop, control goes first to the iteration portion of the {\bf for} statement and then to the conditional expression. For all three loops, any intermediate code is bypassed.
+
+\vskip 1mm
+As with the {\bf break} statement, {\bf continue} may specify a label to describe which enclosing loop to continue.
+
+\vskip 1mm
+Good uses of {\bf continue} are rare. For those special circumstances in which early iteration is needed, the {\bf continue} statement provides a structured way to accomplish it.
+
+\vskip 1in
+\filbreak
+{\bf return}
+
+\vskip 3mm
+The {\bf return} statement is used to explicitly return from a method. That is, it causes program control to transfer back to the caller of the method.
+
+\vskip 1mm
+At any time in a method, the {\bf return} statement immediately terminates the method in which it is executed.
+
+\vskip 1mm
+As soon as {\bf return} is executed, control passes back to the caller.
+
 \filbreak
 \vfill\eject
 \bye
